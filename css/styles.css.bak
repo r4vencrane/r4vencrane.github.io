@@ -1,0 +1,204 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    background: #0d0d0d;
+    font-family: 'Fira Code', monospace;
+    color: #E0E0E0;
+    scroll-behavior: smooth;
+  }
+  
+  h1, h2, h3 {
+    margin: 0.5em 0;
+  }
+  
+  
+  
+  
+  /* ===== Terminal Banner ===== */
+  .terminal {
+    text-align: center;
+    padding: 5em 2em;
+    position: relative;
+    z-index: 2;
+  }
+  
+  .glitch {
+    color: #39FF14;
+    font-size: 2.5em;
+    animation: flicker 1.5s infinite alternate;
+    
+  }
+  
+  @keyframes flicker {
+    0%   { opacity: 1; text-shadow: 0 0 10px #39FF14; }
+    50%  { opacity: 0.6; text-shadow: 0 0 20px #00FF9C; }
+    100% { opacity: 1; text-shadow: 0 0 10px #39FF14; }
+  } 
+  
+  
+  .glitch::before {
+    animation: glitchTop 1s infinite;
+    color: #00ff9c;
+    z-index: -1;
+  }
+  
+  .glitch::after {
+    animation: glitchBottom 1s infinite;
+    color: #ff00ff;
+    z-index: -2;
+  }
+  
+  @keyframes glitch {
+    0% { transform: none; }
+    20% { transform: skew(0.5deg, 0.5deg); }
+    40% { transform: skew(-0.5deg, -0.5deg); }
+    60% { transform: skew(0.5deg, -0.5deg); }
+    80% { transform: skew(-0.5deg, 0.5deg); }
+    100% { transform: none; }
+  }
+  
+  @keyframes glitchTop {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-2px); }
+    100% { transform: translateY(0px); }
+  }
+  
+  @keyframes glitchBottom {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(2px); }
+    100% { transform: translateY(0px); }
+  }
+  
+  /* ===== Typewriter Effect ===== */
+  #terminal-text {
+    color: #39FF14;
+    
+  }
+  
+  @keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+  }
+  
+  @keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: #39FF14; }
+  }
+  
+  /* ===== Buttons ===== */
+  .btn {
+    display: inline-block;
+    margin: 1em;
+    padding: 0.8em 1.5em;
+    border: 2px solid #39FF14;
+    color: #39FF14;
+    background: transparent;
+    transition: all 0.2s;
+  }
+  
+  .btn:hover {
+    background: #39FF14;
+    color: #0D0D0D;
+  }
+  
+  /* ===== Sections ===== */
+  section {
+    padding: 3em 2em;
+    max-width: 900px;
+    margin: auto;
+  }
+  
+  .card {
+    background: #111;
+    border: 1px solid #1aff66;
+    padding: 1.5em;
+    margin-top: 1em;
+    border-radius: 4px;
+  }
+  
+  .card h3 {
+    color: #39FF14;
+  }
+  
+  .card a {
+    color: #00FF9C;
+  }
+  
+  /* ===== Particles BG ===== */
+  #particles-js {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    top: 0;
+    left: 0;
+  }
+
+  .typewriter-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+
+  h2::before {
+    content: "● ";
+    color: #39FF14;
+    animation: blinkDot 1s infinite;
+  }
+  @keyframes blinkDot {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+  
+  .cursor {
+    display: inline-block;
+    color: #39FF14;
+    font-weight: bold;
+    font-size: 1.2em;
+    animation: blink 0.8s infinite;
+    
+  }
+  
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+  
+  #markdown-container {
+    background: #111;
+    padding: 2em;
+    max-width: 900px;
+    margin: 3em auto;
+    border: 1px solid #39FF14;
+    color: #E0E0E0;
+    line-height: 1.6;
+  }
+  
+  #markdown-container h1,
+  #markdown-container h2,
+  #markdown-container h3 {
+    color: #39FF14;
+  }
+  
+  #markdown-container code {
+    background: #0d0d0d;
+    color: #00ff9c;
+    padding: 2px 4px;
+    border-radius: 3px;
+    font-size: 0.95em;
+  }
+
+ a {
+  color: #00FF9C;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+a:hover {
+  color: #39FF14;
+  text-decoration: underline;
+}
+
+
