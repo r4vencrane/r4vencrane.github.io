@@ -1,4 +1,4 @@
-const words = ["payload", "exploits", "malware", "bypass", "shells", "stagers", "scripts"];
+const words = ["payloads", "exploits", "malware", "worms", "shells", "stagers", "scripts"];
 const typed = document.getElementById("typed");
 let currentWord = 0;
 let letterIndex = 0;
