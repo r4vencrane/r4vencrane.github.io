@@ -4,47 +4,48 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>r4venn_ | Red Team Logs</title>
+  <title>r4ven | Offensive Blog</title>
   <link rel="stylesheet" href="css/styles.css"/>
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet"/>
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 </head>
 <body>
       
   <div id="particles-js"></div>
 
-  <div class="terminal">
-    <h1 class="glitch" data-text=">_ r4venn_">>_ Welcome to the Underground</h1>
+  <div class="terminal_arriba">
+    <h1 class="glitch" data-text=">_ r4ven">>_ Welcome to the Underground</h1>
     <div class="typewriter-wrapper">
         <h3 id="terminal-text"><span id="typed"></span><span class="cursor">|</span></h2>
       </div>      
     <nav>
-      <a class="btn" href="#writeups">/writeups</a>
-      <a class="btn" href="#about">/about</a>
-      <a class="btn" href="cv.pdf" target="_blank">/cv</a>
+      <a class="btn" href="walkthroughs.html">/walkthroughs</a>
+      <a class="btn" href="cves.html">/CVEs</a>
+      <a class="btn" href="scripts.html">/scripts</a>
     </nav>
   </div>
 
-  <section id="writeups">
-    <h2>// Writeups & CVEs</h2>
-    <div class="card">
-      <h3>[+] HTB - SneakyMailer</h3>
-      <p>Escalada mediante exploit NodeJS RCE y sudo NOPASSWD abuse.</p>
-      <a href="walkthroughs/htb-sneakymailer.html"> A romper la maquina ></a>
-    </div>
-    <!-- Más writeups aquí -->
-    <div class="card">
-      <h3>[+] HTB - Inception</h3>
-      <p>LFI, SQLI y Pivoting con dockers</p>
-      <a href="walkthroughs/htb-inception.md">A romper la maquina ></a>
-    </div>
-  </section>
 
-  <section id="about">
-    <h2>// Sobre mí</h2>
-    <p>Soy <strong>r4venn_</strong>, Offensive Security Practitioner</p>
-  </section>
+  <div class="social-sidebar">
+    <a href="https://app.hackthebox.com/profile/802825" target="_blank" title="Hack The Box">
+      <!-- Tu SVG aquí -->
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" stroke-width="2">
+        <path d="M12 3l8 4.5l0 9l-8 4.5l-8 -4.5l0 -9l8 -4.5"></path>
+        <path d="M12 12l8 -4.5"></path>
+        <path d="M12 12l0 9"></path>
+        <path d="M12 12l-8 -4.5"></path>
+      </svg>
+      <svg xmlns="http://www.w3.org/2000/svg" ...></svg>
+    </a>
 
+    <a href="https://github.com/venomcrane" target="_blank" title="GitHub">
+      <i class="fab fa-github"></i>
+    </a>
+  </div>
+
+ 
   <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
   <script src="js/main.js"></script>
  
