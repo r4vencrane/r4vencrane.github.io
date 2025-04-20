@@ -13,7 +13,7 @@ function startTypeEffect() {
     const base = "Loading ";
     const word = words[currentWord];
     let currentText = word.substring(0, letterIndex);
-    typed.textContent = `>_ ${base}${currentText}`;
+    typed.textContent = `> ${base}${currentText}`;
 
     if (!isDeleting && letterIndex < word.length) {
       letterIndex++;
@@ -42,10 +42,10 @@ function startParticles() {
       shape: { type: "edge" },
       opacity: { value: 0.2 },
       size: { value: 1 },
-      move: { enable: true, speed: 1.2 },
+      move: { enable: true, speed: 1.5 },
       line_linked: {
         enable: true,
-        distance: 100,
+        distance: 110,
         color: "#00FF9C",
         opacity: 0.5,
         width: 1.5

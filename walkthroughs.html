@@ -13,42 +13,79 @@
   <body>
 
     <div id="particles-js"></div>
+    
+    <!-- Navigation Buttons -->
     <div class="terminal">
-      <h1 class="glitch" data-text=">_r4ven">>_HTB Machines Walkthroughs</h1>
-      <a href="/" class="btn_back">/Go back?</a>
+      <h1 class="glitch-pages" data-text=">_r4ven">> HTB Walkthroughs<span class="cursor">_</span></h1>
+      <div class="nav-buttons">
+        <a class="btn" href="#linux">Linux</a>
+        <a class="btn" href="#windows">Windows</a>
+        <a class="btn" href="/">/Return to Base</a>
+      </div>
     </div>
 
     
-    <section id="writeups">
-      <h2>// Walkthroughs </h2>
+  
+    <!-- LINUX MACHINES -->
+    <section id="linux">
+      <h2>// Linux Machines</h2>
+  
       <div class="card">
         <h3>[+] HTB - Inception</h3>
         <p>Cracking Passwords, Login Brute Forcing, Local File Inclusion, Pivoting</p>
-        <a href="htb/inception/index.html"> Let's Break this Machine > </a>
+        <a href="htb/inception/index.html">Exploit This Box →</a>
       </div>
-
+  
       <div class="card">
         <h3>[+] HTB - Poison</h3>
-        <p>Local File Inclusion, Password Attacks, Pivoting</p>
-        <a href="htb/Poison/index.html"> Let's Break This Machine > </a>
-      </div>    
-      
+        <p>Local File Inclusion, Password Attacks, Shell Injection, Pivoting</p>
+        <a href="#Linux">Engage Target →</a>
+      </div>
+  
+      <div class="card">
+        <h3>[+] HTB - Legacy</h3>
+        <p>SMB Enumeration, MS08-067 Exploitation</p>
+        <a href="#Linux">Execute Exploit →</a>
+      </div>
+    </section>
+  
+    <!-- WINDOWS MACHINES -->
+    <section id="windows">
+      <h2>// Windows Machines</h2>
+  
+      <div class="card">
+        <h3>[+] HTB - Blue</h3>
+        <p>SMBv1, EternalBlue (MS17-010), Meterpreter Shell</p>
+        <a href="#Windows">Trigger EternalBlue →</a>
+      </div>
+  
+      <div class="card">
+        <h3>[+] HTB - Optimum</h3>
+        <p>HttpFileServer, Exploit-db PoC, Reverse Shell</p>
+        <a href="#Windows">Launch Exploit →</a>
+      </div>
+  
+      <div class="card">
+        <h3>[+] HTB - Arctic</h3>
+        <p>ColdFusion Exploit, Privilege Escalation</p>
+        <a href="#Windows">Access Server →</a>
+      </div>
     </section>
 
     <div class="social-sidebar">
       <a href="https://app.hackthebox.com/profile/802825" target="_blank" title="Hack The Box">
-        <!-- Tu SVG aquí -->
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" stroke-width="2">
-          <path d="M12 3l8 4.5l0 9l-8 4.5l-8 -4.5l0 -9l8 -4.5"></path>
-          <path d="M12 12l8 -4.5"></path>
-          <path d="M12 12l0 9"></path>
-          <path d="M12 12l-8 -4.5"></path>
+          <path d="M12 3l8 4.5v9l-8 4.5-8-4.5v-9l8-4.5"></path>
+          <path d="M12 12l8-4.5M12 12v9M12 12L4 7.5"></path>
         </svg>
-        <svg xmlns="http://www.w3.org/2000/svg" ...></svg>
       </a>
-
+    
       <a href="https://github.com/venomcrane" target="_blank" title="GitHub">
         <i class="fab fa-github"></i>
+      </a>
+    
+      <a href="https://www.linkedin.com/in/brandon-gachuz-6344b82b7/" target="_blank" title="LinkedIn">
+        <i class="fab fa-linkedin"></i>
       </a>
     </div>
 

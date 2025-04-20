@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>r4venn | Exploits</title>
+  <link rel="stylesheet" href="/css/styles.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/monokai-sublime.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+  <div id="particles-js"></div>
+
+  <div class="terminal">
+    <h1 class="glitch-pages" data-text=">_r4ven">> Exploits<span class="cursor">_</span></h1>
+    
+    
+
+    <!-- Navigation Buttons -->
+    <div class="nav-buttons">
+      <a class="btn" href="#scripts">Scripts</a>
+      <a class="btn" href="#payloads">Payloads</a>
+      <a class="btn" href="#malware">Malware</a>
+      <a class="btn" href="#exploits">Exploits</a>
+      <a class="btn" href="/">/Return to Base</a>
+    </div>
+</div>
+
+  <!-- Scripts -->
+  <section id="scripts">
+    <h2>// Scripts</h2>
+    <div class="card">
+      <h3>HTB Machines</h3>
+      <p>It allows you to search machines by name, IP address, skills, OS, difficulty, or browse interactively by category.</p>
+      <pre><code class="language-bash">./htbmachines.sh -m Inception</code></pre>
+      <a href="https://github.com/venomcrane/HTB-Machines">View Script ></a>
+    </div>
+
+    <div class="card">
+        <h3>Network Recon</h3>
+        <p>Bash-based wrapper for nmap, designed to perform clean, automated, and aesthetically enhanced network scans.</p>
+        <p>Mainly for Hack The Box Machines!!</p>
+        <pre><code class="language-bash">./netrecon.sh -i 10.10.14.29</code></pre>
+        <a href="https://github.com/venomcrane/Network-Recon">View Script ></a>
+    </div>
+
+    <div class="card">
+        <h3>ARP Scanner</h3>
+        <p>Project in process...</p>
+        <a href="#scripts">View Tool ></a>
+    </div>
+
+    
+
+  </section>
+
+  <!-- Payloads -->
+  <section id="payloads">
+    <h2>// Payloads</h2>
+    <div class="card">
+      <h3>antraXSS</h3>
+      <p>Python tool to automate discovery of reflected XSS. Proyect in process...</p>
+      <pre><code class="language-bash">python3 antraXSS.py -u "http://target.com/search?q=123"</code></pre>
+      <a href="#payloads">Load Payload ></a>
+    </div>
+
+    <div class="card">
+        <h3>Backdoors</h3>
+        <p>Python Backdoors.</p>
+        <a href="#payloads">Load Payload ></a>
+    </div>
+
+    <div class="card">
+        <h3>Foward Shells</h3>
+        <p>Project in process...</p>
+        <a href="#payloads">Load Payload ></a>
+    </div>
+
+
+  </section>
+
+  <!-- Malware -->
+  <section id="malware">
+    <h2>// Malware</h2>
+    <div class="card">
+      <h3>ARP Spoofer</h3>
+      <p>Project in process...</p>
+      <a href="#malware">Deploy Malware ></a>
+    </div>
+
+    <div class="card">
+      <h3>DNS Sniffer</h3>
+      <p>Project in process...</p>
+      <a href="#malware">Deploy Malware ></a>
+    </div>
+
+    <div class="card">
+        <h3>Keylogger</h3>
+        <p>Project in process...</p>
+        <a href="#malware">Deploy Malware ></a>
+    </div>
+
+
+  </section>
+
+
+  <!-- EXPLOITS -->
+  <section id="exploits">
+    <h2>// Exploits</h2>
+    <div class="card">
+      <h3>TokenSpray</h3>
+      <p>Project in process...</p>
+      <a href="https://github.com/venomcrane/TokenSpray">Access →</a>
+    </div>
+  </section>
+
+  <!-- Sidebar -->
+<div class="social-sidebar">
+    <a href="https://app.hackthebox.com/profile/802825" target="_blank" title="Hack The Box">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" stroke-width="2">
+        <path d="M12 3l8 4.5v9l-8 4.5-8-4.5v-9l8-4.5"></path>
+        <path d="M12 12l8-4.5M12 12v9M12 12L4 7.5"></path>
+      </svg>
+    </a>
+  
+    <a href="https://github.com/venomcrane" target="_blank" title="GitHub">
+      <i class="fab fa-github"></i>
+    </a>
+  
+    <a href="https://www.linkedin.com/in/brandon-gachuz-6344b82b7/" target="_blank" title="LinkedIn">
+      <i class="fab fa-linkedin"></i>
+    </a>
+  </div>
+  
+
+  <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+  <script src="/js/main.js"></script>
+</body>
+</html>

