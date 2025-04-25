@@ -10,6 +10,23 @@ body, html {
 
 h1, h2, h3 {
   margin: 0.7em 0;
+  color: #6eff14;
+  text-shadow: 0 0 300px #173b00, 0 0 10px #246101;
+  
+}
+
+h2 {
+  color: #6eff14;
+  font-size: 1.5em;
+  text-shadow: 0 0 300px #173b00, 0 0 10px #246101;
+
+}
+
+p {
+  line-height: 1.6;
+  color:rgba(255, 255, 255, 0.946);
+  font-size: 1.1em;
+  margin: 0.5em 0;
 }
 
 a {
@@ -92,16 +109,20 @@ section {
 }
 
 .card {
-  background: #111;
+  background: #000000;
   border: 1.5px solid #63ff1a;
   padding: 1.5em;
-  margin-top: 1.6em;
+  margin-top: 2.5em;
   border-radius: 8px;
   box-shadow: 0 0 15px rgba(0, 255, 153, 0.5);
   transition: all 0.3s;
   position: relative;
   z-index: 2;
+  transition: transform 0.2s ease-in-out;
+}
 
+.card:hover {
+  transform: scale(1.01);
 }
 
 
@@ -114,40 +135,91 @@ section {
 }
 
 /* ===== Buttons ===== */
-.btn {
-  display: inline-block;
-  margin: 1em;
-  padding: 0.8em 1.5em;
-  border: 2px solid #39FF14;
+.selection .btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.75em 3em;
+  margin: 1.2em auto 0;
+  font-size: 1em;
+  font-family: 'Fira Code', monospace;
   color: #39FF14;
   background: transparent;
-  transition: all 0.2s;
+  border: 2.5px solid #39FF14;
+  border-radius: 13px;
+  cursor: pointer;
+  transition: all 0.25s ease-in-out;
+  text-decoration: none;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  box-shadow:
+    0 0 8px rgba(57, 255, 20, 0.3),
+    inset 0 0 5px rgba(57, 255, 20, 0.1);
+  animation: armedPulse 2s infinite alternate ease-in-out;
 }
 
-.btn:hover {
-  background: #39FF14;
-  color: #0D0D0D;
+.selection .btn:hover {
+  background: #62f201;
+  color: #0d0d0d;
+  transform: scale(1.04);
+  box-shadow:
+    0 0 15px rgba(57, 255, 20, 0.6),
+    0 0 30px rgba(57, 255, 20, 0.4),
+    inset 0 0 12px rgba(57, 255, 20, 0.2);
 }
 
-.btn_back {
-  display: inline-block;
-  margin-top: 1em;
+.selection .btn:active {
+  transform: scale(0.96);
+  box-shadow:
+    0 0 8px rgba(57, 255, 20, 0.4),
+    inset 0 0 4px rgba(57, 255, 20, 0.3);
+}
+
+@keyframes armedPulse {
+  0% {
+    box-shadow:
+      0 0 12px rgba(57, 255, 20, 0.2),
+      inset 0 0 6px rgba(57, 255, 20, 0.1);
+  }
+  100% {
+    box-shadow:
+      0 0 24px rgba(57, 255, 20, 0.5),
+      inset 0 0 14px rgba(57, 255, 20, 0.3);
+  }
+}
+
+
+
+.nav-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1em;
+  flex-wrap: wrap;
+  margin: 2em 0;
+}
+
+.nav-buttons .btn {
+  background: transparent;
+  border: 2px solid #39FF14;
+  color: #39FF14;
   padding: 0.5em 1em;
-  border: 2px solid #39FF14;
-  color: #39FF14;
-  background: transparent;
+  transition: all 0.2s ease-in-out;
   font-size: 1.2em;
   text-decoration: none;
-  transition: all 0.2s ease-in-out;
-  align-self: flex-start;
+  border-radius: 6px;
+  cursor: pointer;
+  display: inline-block;
 }
 
-.btn_back:hover {
+.nav-buttons .btn:hover {
   background: #39FF14;
   color: #0d0d0d;
-  cursor: pointer;
+  transform: scale(1.05);
 }
-
+.nav-buttons .btn:active {
+  transform: scale(0.95);
+}
 
 /* ===== Typewriter & Cursor ===== */
 #terminal-text {
@@ -187,82 +259,7 @@ h3::before {
   50% { opacity: 0; }
 }
 
-/* ===== Markdown Container (si usas marked.js) ===== */
-#markdown-container {
-  background: #111;
-  padding: 2em;
-  max-width: 900px;
-  margin: 3em auto;
-  border: 2px solid #39FF14;
-  box-shadow: 0 0 15px rgba(0, 255, 153, 0.5);
-  color: #E0E0E0;
-  line-height: 1.6;
-  position: relative;
-  z-index: 2;
-}
 
-#markdown-container h1,
-#markdown-container h2,
-#markdown-container h3 {
-  color: #39FF14;
-}
-
-#markdown-container code {
-  background: linear-gradient(145deg, #1a1a1a, #0b1600);
-  color: #00ff9c;
-  padding: 3px 6px;
-  border-radius: 3px;
-  font-size: 0.95em;
-  font-family: 'Fira Code', monospace;
-  border: 1px solid rgba(57, 255, 20, 0.3);
-  box-shadow:
-    0 0 2px rgba(57, 255, 20, 0.3),
-    0 0 5px rgba(0, 255, 156, 0.2),
-    inset 0 0 3px rgba(0, 255, 156, 0.2);
-  transition: all 0.3s ease;
-  animation: codePulse 3s infinite ease-in-out;
-}
-
-#markdown-container code:hover {
-  background: #0f0f0f;
-  transform: scale(1.01);
-  box-shadow:
-    0 0 6px rgba(0, 255, 156, 0.5),
-    0 0 10px rgba(0, 255, 156, 0.3);
-}
-
-
-
-#markdown-container .language-python {
-  background: linear-gradient(145deg, #1a1a1a, #00141a);
-  color: #00ff9c;
-  padding: 3px 6px;
-  border-radius: 3px;
-  font-size: 0.95em;
-  font-family: 'Fira Code', monospace;
-  border: 1px solid rgba(57, 255, 20, 0.3);
-  box-shadow:
-    0 0 2px rgba(57, 255, 20, 0.3),
-    0 0 5px rgba(0, 255, 156, 0.2),
-    inset 0 0 3px rgba(0, 255, 156, 0.2);
-  transition: all 0.3s ease;
-  animation: codePulse 3s infinite ease-in-out;
-}
-
-@keyframes codePulse {
-  0%, 100% {
-    box-shadow:
-      0 0 2px rgba(57, 255, 20, 0.3),
-      0 0 5px rgba(0, 255, 156, 0.2),
-      inset 0 0 3px rgba(0, 255, 156, 0.2);
-  }
-  50% {
-    box-shadow:
-      0 0 4px rgba(57, 255, 20, 0.6),
-      0 0 8px rgba(0, 255, 156, 0.3),
-      inset 0 0 6px rgba(0, 255, 156, 0.4);
-  }
-}
 
 
 /* ===== Layout Helpers ===== */
@@ -309,7 +306,7 @@ h3::before {
   transform: translateY(-50%);
   display: flex;
   flex-direction: column;
-  gap: 1em;
+  gap: 1.3em;
   z-index: 10;
 }
 
@@ -320,67 +317,100 @@ h3::before {
 }
 
 .social-sidebar a:hover {
-  color: #00FF9C;
+  color: #37ff00;
+  cursor: pointer;
+  transform: scale(1.1);
+  transition: transform 0.2s;
 }
 
 .social-sidebar svg {
   width: 32px;
   height: 32px;
-  stroke: #39FF14;
+  stroke: #25f101;
   transition: stroke 0.3s;
 }
 
 .social-sidebar svg:hover {
-  stroke: #00FF9C;
+  stroke: #44ff00;
+  cursor: pointer;
+  transform: scale(1.1);
+  transition: transform 0.2s;
+
 }
 
-
-code {
-  background: linear-gradient(145deg, #1a1a1a, #0b1600);
-  color: #00ff9c;
-  padding: 0.2px 6px;
-  border-radius: 3px;
-  font-size: 0.95em;
+/* ===== CODE BLOCKS ===== */
+pre code {
+  display: block;
+  background: #000 !important;
+  color: #00FF41;
+  padding: 1em;
+  margin: 1em 0;
+  border-radius: 6px;
+  font-size: 0.9em;
   font-family: 'Fira Code', monospace;
-  border: 1px solid rgba(57, 255, 20, 0.3);
-  box-shadow:
-    0 0 2px rgba(57, 255, 20, 0.3),
-    0 0 5px rgba(0, 255, 156, 0.2),
-    inset 0 0 3px rgba(0, 255, 156, 0.2);
-  transition: all 0.3s ease;
-  animation: codePulse 3s infinite ease-in-out;
-}
-
-code:hover {
-  background: #82e40a;
-  color: rgba(11, 22, 17, 0.922);
-  transform: scale(1.01);
-  box-shadow:
-    0 0 6px rgba(0, 255, 156, 0.5),
-    0 0 10px rgba(0, 255, 156, 0.3);
-}
-
-.nav-buttons {
-  display: flex;
-  justify-content: center;
-  gap: 1em;
-  flex-wrap: wrap;
-  margin: 2em 0;
-}
-
-.nav-buttons .btn {
-  background: transparent;
-  border: 2px solid #39FF14;
-  color: #39FF14;
-  padding: 0.5em 1em;
+  line-height: 1.5;
+  overflow-x: auto;
+  border: 1.3px solid #1aff29;
+  box-shadow: 0 0 20px rgba(0, 255, 153, 0.15);
   transition: all 0.2s ease-in-out;
-  font-size: 1.2em;
+  
+}
+pre code:hover {
+  background: #66ff00 !important;
+  color: #000 !important;
+  box-shadow: 0 0 30px rgba(250, 255, 0, 0.3);
 }
 
-.nav-buttons .btn:hover {
-  background: #39FF14;
-  color: #0d0d0d;
-  transform: scale(1.05);
+/* Inline <code> */
+code {
+  background: #000;
+  color: #00FF41;
+  padding: 2px 6px;
+  border-radius: 4px;
+  border: 1px solid rgba(0, 255, 65, 0.3);
+  box-shadow: 0 0 5px rgba(0, 255, 65, 0.15);
 }
+code:hover {
+  background: #00FF9C;
+  color: #000;
+}
+
+
+
+
+
+.nuclear-quote {
+  font-family: 'Fira Code', monospace;
+  font-size: 1.2em;
+  color: #ff4d4d;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-align: center;
+  margin-top: -0.5em;
+  margin-bottom: 2em;
+  animation: pulseGlow 3s infinite alternate ease-in-out, fadeInSlow 2s ease forwards;
+  text-shadow: 0 0 4px rgba(249, 2, 2, 0.5),
+               0 0 10px rgba(255, 20, 20, 0.3),
+               0 0 30px rgba(68, 5, 5, 0.2);
+}
+
+
+
+@keyframes fadeInSlow {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-sidebar {
+  opacity: 0;
+  animation: sidebarFade 1s ease-in-out forwards;
+  animation-delay: 0.1s;
+}
+
+@keyframes sidebarFade {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(200); }
+}
+
 
 

