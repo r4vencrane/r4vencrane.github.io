@@ -481,6 +481,7 @@ body, html {
   align-items: end; /* Centra los íconos verticalmente */
   justify-content: center;
   gap: 1.3em; /* Espacio entre íconos */
+  z-index: auto;
 }
 
 /* === Enlaces del sidebar === */
