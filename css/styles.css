@@ -412,5 +412,25 @@ code:hover {
   to { opacity: 1; transform: translateY(200); }
 }
 
+.site-footer {
+  background: #0d0d0d;
+  color: #39FF14;
+  text-align: center;
+  padding: 2em 0;
+  font-size: 0.9em;
+  border-top: 1px solid rgba(57, 255, 20, 0.2);
+  box-shadow: 0 -5px 15px rgba(0, 255, 153, 0.1);
+  margin-top: 3em;
+  z-index: 5;
+}
 
+.site-footer a {
+  color: #00FF9C;
+  text-decoration: none;
+  margin: 0 0.3em;
+  transition: color 0.3s;
+}
 
+.site-footer a:hover {
+  color: #39FF14;
+}

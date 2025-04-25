@@ -79,5 +79,22 @@ window.onload = () => {
   startParticles();
 };
 
+// Cargar el footer desde un archivo externo
+window.addEventListener('DOMContentLoaded', () => {
+  fetch('/footer.html')
+    .then(res => res.text())
+    .then(html => {
+      const footerContainer = document.createElement('div');
+      footerContainer.innerHTML = html;
+      document.body.appendChild(footerContainer);
+      
+      // Insertar el año actual automáticamente
+      const yearSpan = document.getElementById('year');
+      if (yearSpan) {
+        yearSpan.textContent = new Date().getFullYear();
+      }
+    })
+    .catch(err => console.error('Error loading footer:', err));
+});
 
 
