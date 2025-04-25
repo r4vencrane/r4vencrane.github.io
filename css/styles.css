@@ -470,21 +470,65 @@ body, html {
     padding: 0.8em 1em;
   }
 
-  .social-sidebar {
-    position: fixed;
-    bottom: 1em;
-    left: 50%;
-    transform: translateX(-50%);
-    flex-direction: row;
-    gap: 1.5em;
-    background: rgba(0, 0, 0, 0.6);
-    padding: 0.5em 1em;
-    border-radius: 20px;
-    z-index: 99;
-  }
-
-  .social-sidebar svg,
-  .social-sidebar i {
-    font-size: 1.4em;
-  }
+  /* === Social Sidebar (Fijo abajo y centrado) === */
+.social-sidebar {
+  position: fixed; /* Fija la posición para que siempre esté visible en pantalla */
+  bottom: 1.5em; /* Distancia desde la parte inferior de la ventana */
+  left: 50%; /* Posiciona horizontalmente en el centro */
+  transform: translateX(-50%); /* Ajuste fino: lo centra completamente restando la mitad de su ancho */
+  flex-direction: row;
+  display: flex; /* Flexbox para alinear los íconos horizontalmente */
+  align-items: end; /* Centra los íconos verticalmente */
+  justify-content: center;
+  gap: 1.3em; /* Espacio entre íconos */
 }
+
+/* === Enlaces del sidebar === */
+.social-sidebar a {
+  display: flex; /* Asegura que íconos dentro se centren */
+  align-items: end; /* Centrado vertical */
+  justify-content: flex-end; /* Centrado horizontal */
+  color: #39FF14; /* Color verde neón para íconos FontAwesome */
+  text-decoration: none; /* Sin subrayado */
+  transition: transform 0.2s ease, color 0.2s ease; /* Suaviza transformaciones y cambios de color */
+}
+
+/* === Íconos FontAwesome === */
+.social-sidebar i {
+  font-size: 1em; /* Tamaño adecuado para íconos */
+  color: #39FF14; /* Color neón */
+  transition: transform 0.2s ease, color 0.2s ease; /* Suaviza transformaciones y cambios de color */
+  margin: 0 0.5em; /* Espacio entre íconos */
+  padding: 0.5em; /* Espacio interno para clics más cómodos */
+  border-radius: 50%; /* Bordes redondeados */
+  background: rgba(57, 255, 20, 0.1); /* Fondo suave para resaltar íconos */
+  box-shadow: 0 0 10px rgba(57, 255, 20, 0.2); /* Sombra suave */
+  transition: box-shadow 0.2s ease; /* Suaviza la sombra */
+}
+
+/* === SVG específico para el logo de Hack The Box === */
+.social-sidebar svg {
+  width: 36px; /* Anchura SVG */
+  height: 36px; /* Altura SVG */
+  stroke: #39FF14; /* Color del trazo */
+  transition: transform 0.2s ease, stroke 0.2s ease; /* Transiciones suaves en hover */
+  margin: 0 0.5em; /* Espacio entre íconos */
+  padding: 0.5em; /* Espacio interno para clics más cómodos */
+  border-radius: 50%; /* Bordes redondeados */
+  background: rgba(57, 255, 20, 0.1); /* Fondo suave para resaltar íconos */
+  box-shadow: 0 0 10px rgba(57, 255, 20, 0.2); /* Sombra suave */
+  transition: box-shadow 0.2s ease; /* Suaviza la sombra */
+
+}
+
+/* === Hover sobre íconos SVG === */
+.social-sidebar a:hover svg {
+  stroke: #00FF9C; /* Cambia color al pasar el mouse */
+  transform: scale(1.15); /* Agranda ligeramente */
+}
+
+/* === Hover sobre íconos FontAwesome === */
+.social-sidebar a:hover i {
+  color: #00FF9C; /* Cambia color al pasar el mouse */
+  transform: scale(1.15); /* Agranda ligeramente */
+}}
