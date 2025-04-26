@@ -37,7 +37,7 @@ function startParticles() {
 
   particlesJS("particles-js", {
     particles: {
-      number: { value: 150 },
+      number: { value: 100 },
       color: { value: "#AEFF00" },
       shape: { type: "edge" },
       opacity: { value: 0.2 },
@@ -48,7 +48,7 @@ function startParticles() {
         distance: 110,
         color: "#00FF9C",
         opacity: 0.5,
-        width: 1.5
+        width: 3.5
       }
     },
     interactivity: {

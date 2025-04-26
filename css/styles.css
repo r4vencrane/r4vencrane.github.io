@@ -2,7 +2,7 @@
 body, html {
   margin: 0;
   padding: 0;
-  background: #0d0d0d;
+  background: #000000;
   font-family: 'Fira Code', monospace;
   color: #E0E0E0;
   scroll-behavior: smooth;
@@ -110,11 +110,11 @@ section {
 
 .card {
   background: #000000;
-  border: 1.5px solid #63ff1a;
+  border: 3px solid #72ff1a;
   padding: 1.5em;
   margin-top: 2.5em;
   border-radius: 8px;
-  box-shadow: 0 0 15px rgba(0, 255, 153, 0.5);
+  box-shadow: 0 0 20px rgba(0, 255, 153, 0.5);
   transition: all 0.3s;
   position: relative;
   z-index: 2;
@@ -417,7 +417,7 @@ code:hover {
 }
 
 .site-footer {
-  background: #0d0d0d;
+  background: #000000;
   color: #39FF14;
   text-align: center;
   padding: 2em 0;
@@ -438,6 +438,11 @@ code:hover {
 .site-footer a:hover {
   color: #39FF14;
 }
+
+.glitch, .nuclear-quote, .cursor {
+  will-change: opacity, transform;
+}
+
 
 /* === Base Responsive Tweaks === */
 body, html {
