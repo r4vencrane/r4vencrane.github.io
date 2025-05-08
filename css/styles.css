@@ -154,7 +154,7 @@ section.walkthrough h2 {
   section.walkthrough {
     padding: 3em 1em;
     max-width: 100%;
-    text-align: center;
+    text-align: left;
   }
 
   section.walkthrough .card {
