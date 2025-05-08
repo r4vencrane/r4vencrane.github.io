@@ -108,13 +108,72 @@ section {
   z-index: 2;
 }
 
+/* Estilo base */
+section.walkthrough {
+  padding: 0.5em 2em;
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+  background: transparent;
+  color: #d3fcd5;
+  text-align: left;
+  font-family: 'Fira Code', monospace;
+  line-height: 2;
+  z-index: 2;
+}
+
+/* Modular cards dentro del walkthrough */
+section.walkthrough .card {
+  background: transparent;
+  border: 3px solid #72ff1a;
+  padding: 1.5em;
+  margin-top: 2.5em;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(106, 255, 0, 0.5);
+  transition: all 0.3s;
+  position: relative;
+  z-index: 2;
+  transition: transform 0.2s ease-in-out;
+}
+
+section.walkthrough .card:hover {
+  transform: scale(1);
+}
+
+/* Encabezados */
+section.walkthrough h2 {
+  font-size: 2em;
+  color: #78ff00;
+  margin-bottom: 0.5em;
+}
+
+/* Responsive para móviles */
+@media (max-width: 768px) {
+  section.walkthrough {
+    padding: 3em 1em;
+    max-width: 100%;
+    text-align: center;
+  }
+
+  section.walkthrough .card {
+    padding: 1.5em;
+  }
+
+  section.walkthrough h2 {
+    font-size: 1.6em;
+  }
+}
+
+
 .card {
   background: #000000;
   border: 3px solid #72ff1a;
   padding: 1.5em;
   margin-top: 2.5em;
   border-radius: 8px;
-  box-shadow: 0 0 20px rgba(0, 255, 153, 0.5);
+  box-shadow: 0 0 18px rgba(106, 255, 0, 0.5);
   transition: all 0.3s;
   position: relative;
   z-index: 2;
@@ -342,45 +401,56 @@ h3::before {
 pre code {
   display: block;
   background: #000 !important;
-  color: #00ffc3;
+  color: #33ff00;
   padding: 1em;
   margin: 1em 0;
   border-radius: 6px;
   font-size: 0.9em;
-  font-family: 'Fira Code', monospace;
+  font-family: 'JetBrains Mono', monospace;
   line-height: 1.5;
   overflow-x: auto;
-  border: 1.3px solid #1aff29;
+  border: 2.3px solid #90ff1a;
   box-shadow: 0 0 20px rgba(0, 255, 153, 0.15);
   transition: all 0.2s ease-in-out;
   text-shadow: 0 0 10px rgba(0, 255, 153, 0.2);
   animation: glow 1s infinite alternate ease-in-out;
+
+  max-width: 95%;       /* 🔥 evita que se pase del container */
+  width: 100%;
+  box-sizing: border-box;
   
 }
 pre code:hover {
   background: #66ff00 !important;
   color: #000 !important;
   box-shadow: 0 0 30px rgba(250, 255, 0, 0.3);
-  transform: scale(1.02);
+  transform: scale(1.01);
   transition: all 0.2s ease-in-out;
   border: 1.3px solid #00ff00;
   text-shadow: 0 0 10px rgba(0, 255, 153, 0.2);
-  animation: glow 1s infinite alternate ease-in-out;
+  animation: glow 2s infinite alternate ease-in-out;
 }
 
-/* Inline <code> */
+
+
+/* Inline <code> style — clean hacker highlight */
 code {
-  background: #000;
-  color: #00FF41;
-  padding: 2px 6px;
-  border-radius: 4px;
-  border: 1px solid rgba(0, 255, 64, 0.937);
-  box-shadow: 0 0 5px rgba(0, 255, 65, 0.15);
+  color: #89ff14;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.95em;
+  padding: 0;
+  background: none;
+  border: none;
+  box-shadow: none;
+  transition: color 0.2s ease-in-out;
 }
+
 code:hover {
-  background: #09ff00;
-  color: #000;
+  color: rgb(98, 255, 0);
+  text-shadow: 0 0 4px rgba(102, 255, 20, 0.6);
 }
+
+
 
 
 .nuclear-quote {
