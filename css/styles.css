@@ -152,13 +152,13 @@ section.walkthrough h2 {
 /* Responsive para móviles */
 @media (max-width: 768px) {
   section.walkthrough {
-    padding: 3em 1em;
+    padding: 0.5em 1em;
     max-width: 100%;
     text-align: left;
   }
 
   section.walkthrough .card {
-    padding: 1.5em;
+    padding: 0.5em;
   }
 
   section.walkthrough h2 {
