@@ -168,85 +168,123 @@ section.walkthrough h2 {
 
 
 .card {
-  background: #000000;
-  border: 3px solid #72ff1a;
+  background: rgba(0, 0, 0, 0.25); /* Más opacidad para contraste */
+  backdrop-filter: blur(7px) saturate(160%);
+  -webkit-backdrop-filter: blur(7px) saturate(160%);
+  border: 2.5px solid rgb(114, 255, 26);
   padding: 1.5em;
   margin-top: 2.5em;
   border-radius: 8px;
-  box-shadow: 0 0 18px rgba(106, 255, 0, 0.5);
-  transition: all 0.3s;
+  box-shadow:
+    0 0 25px rgba(106, 255, 0, 0.36),
+    inset 0 0 6px rgba(114, 255, 26, 0.05); /* 🔥 Profundidad sutil */
+  transition: transform 0.2s ease-in-out, box-shadow 0.3s ease;
   position: relative;
   z-index: 2;
-  transition: transform 0.2s ease-in-out;
+  animation: fadeUp 0.5s ease forwards;
 }
 
-.card:hover {
-  transform: scale(1.01);
+.card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(114, 255, 26, 0.03), rgba(0,255,153,0.02));
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: -1;
 }
 
 
+
+/* Headings inside card */
 .card h3 {
-  color: #5eff14;
+  color: #72ff1a;
+  font-size: 1.4em;
+  
 }
 
+/* Links */
 .card a {
-  color: #00FF9C;
+  color: #00ff9c;
+  text-decoration: none;
+  transition: color 0.2s ease;
 }
 
-/* ===== Buttons ===== */
+.card a:hover {
+  color: #0affc2;
+  text-shadow: 0 0 5px rgba(0, 255, 156, 0.3);
+}
+
+
+
+
+@keyframes fadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .selection .btn {
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  padding: 0.75em 3em;
+  padding: 0.75em 2.5em;
   margin: 1.2em auto 0;
   font-size: 1em;
   font-family: 'Fira Code', monospace;
   color: #39FF14;
-  background: transparent;
-  border: 2.5px solid #39FF14;
-  border-radius: 13px;
+  background-color: #000;
+  border: 2px solid #39FF14;
+  border-radius: 12px;
   cursor: pointer;
-  transition: all 0.25s ease-in-out;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
   text-decoration: none;
   position: relative;
   z-index: 1;
   overflow: hidden;
   box-shadow:
-    0 0 8px rgba(57, 255, 20, 0.3),
-    inset 0 0 5px rgba(57, 255, 20, 0.1);
-  animation: armedPulse 2s infinite alternate ease-in-out;
+    0 0 6px rgba(57, 255, 20, 0.4),
+    inset 0 0 4px rgba(57, 255, 20, 0.1);
 }
 
+/* === Hover === */
 .selection .btn:hover {
-  background: #62f201;
-  color: #0d0d0d;
-  transform: scale(1.04);
+  background-color: #39FF14;
+  color: #000;
+  transform: scale(1.03);
   box-shadow:
-    0 0 15px rgba(57, 255, 20, 0.6),
-    0 0 30px rgba(57, 255, 20, 0.4),
-    inset 0 0 12px rgba(57, 255, 20, 0.2);
+    0 0 15px rgba(55, 255, 20, 0.301),
+    inset 0 0 8px rgba(57, 255, 20, 0.2);
 }
 
+/* === Active === */
 .selection .btn:active {
   transform: scale(0.96);
   box-shadow:
-    0 0 8px rgba(57, 255, 20, 0.4),
+    0 0 6px rgba(57, 255, 20, 0.4),
     inset 0 0 4px rgba(57, 255, 20, 0.3);
+}
+
+/* === Optional: Pulsing Border only on focus === */
+.selection .btn:focus-visible {
+  outline: none;
+  animation: armedPulse 1.5s infinite ease-in-out;
 }
 
 @keyframes armedPulse {
   0% {
-    box-shadow:
-      0 0 12px rgba(57, 255, 20, 0.2),
-      inset 0 0 6px rgba(57, 255, 20, 0.1);
+    box-shadow: 0 0 12px rgba(57, 255, 20, 0.2), inset 0 0 6px rgba(57, 255, 20, 0.1);
   }
   100% {
-    box-shadow:
-      0 0 24px rgba(57, 255, 20, 0.5),
-      inset 0 0 14px rgba(57, 255, 20, 0.3);
+    box-shadow: 0 0 22px rgba(57, 255, 20, 0.5), inset 0 0 14px rgba(57, 255, 20, 0.3);
   }
 }
+
 
 
 
@@ -397,39 +435,37 @@ h3::before {
 
 }
 
-/* ===== CODE BLOCKS ===== */
+/* ===== CODE BLOCKS (OPTIMIZADO) ===== */
 pre code {
   display: block;
-  background: #000 !important;
+  background-color: #000 !important;
   color: #33ff00;
   padding: 1em;
-  margin: 1em 0;
-  border-radius: 6px;
-  font-size: 0.9em;
+  margin: 1.5em 0;
+  border-radius: 8px;
+  font-size: 0.95em;
   font-family: 'JetBrains Mono', monospace;
-  line-height: 1.5;
+  line-height: 1.6;
   overflow-x: auto;
-  border: 2.3px solid #90ff1a;
-  box-shadow: 0 0 20px rgba(0, 255, 153, 0.15);
-  transition: all 0.2s ease-in-out;
-  text-shadow: 0 0 10px rgba(0, 255, 153, 0.2);
-  animation: glow 1s infinite alternate ease-in-out;
+  white-space: pre;
+  border: 2px solid #90ff1a;
+  box-shadow: 0 0 10px rgba(0, 255, 153, 0.3);
+  text-shadow: 0 0 5px rgba(0, 255, 153, 0.2);
+  transition: background 0.2s ease-in-out, color 0.2s ease-in-out, transform 0.2s ease-in-out;
 
-  max-width: 95%;       /* 🔥 evita que se pase del container */
-  width: 100%;
+  max-width: 100%;
   box-sizing: border-box;
-  
 }
+
 pre code:hover {
-  background: #66ff00 !important;
+  background-color: #66ff00 !important;
   color: #000 !important;
-  box-shadow: 0 0 30px rgba(250, 255, 0, 0.3);
+  box-shadow: 0 0 15px rgba(13, 255, 0, 0.4);
   transform: scale(1.01);
-  transition: all 0.2s ease-in-out;
-  border: 1.3px solid #00ff00;
-  text-shadow: 0 0 10px rgba(0, 255, 153, 0.2);
-  animation: glow 2s infinite alternate ease-in-out;
+  border: 2px solid #00ff00;
+  text-shadow: 0 0 8px rgba(0, 255, 153, 0.3);
 }
+
 
 
 
@@ -534,6 +570,7 @@ body, html {
 
   .nav-buttons {
     flex-direction: column;
+    justify-content: center;
     align-items: center;
     gap: 0.8em;
   }
@@ -573,13 +610,12 @@ body, html {
 .social-sidebar i {
   font-size: 1em; /* Tamaño adecuado para íconos */
   color: #39FF14; /* Color neón */
-  transition: transform 0.2s ease, color 0.2s ease; /* Suaviza transformaciones y cambios de color */
+  transition: transform 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
   margin: 0 0.5em; /* Espacio entre íconos */
   padding: 0.5em; /* Espacio interno para clics más cómodos */
   border-radius: 50%; /* Bordes redondeados */
   background: rgba(57, 255, 20, 0.1); /* Fondo suave para resaltar íconos */
   box-shadow: 0 0 10px rgba(57, 255, 20, 0.2); /* Sombra suave */
-  transition: box-shadow 0.2s ease; /* Suaviza la sombra */
 }
 
 /* === SVG específico para el logo de Hack The Box === */
