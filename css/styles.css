@@ -9,17 +9,61 @@ body, html {
 }
 
 h1, h2, h3 {
-  margin: 0.7em 0;
+  margin: 0.5em 0;
   color: #6eff14;
-  text-shadow: 0 0 300px #173b00, 0 0 10px #246101;
   
+}
+
+@font-face {
+  font-family: 'Hack Nerd Font Mono';
+  src: url('/fonts/HackNFM-Bold.woff2') format('woff2'),
+      url('/fonts/HackNFM-Bold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Hack Nerd Font Mono';
+  src: url('/fonts/HackNFM-Regular.woff2') format('woff2'),
+      url('/fonts/HackNFM-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+
+@font-face {
+  font-family: 'Future Earth';
+  src: url('/fonts/FutureEarth.woff2') format('woff2'),
+      url('/fonts/FutureEarth.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Neuropol X';
+  src: url('/fonts/NeuropolX-Regular.woff2') format('woff2'),
+      url('/fonts/NeuropolX-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Blade Runner Movie Font';
+  src: url('/fonts/BladeRunnerMovieFont.woff2') format('woff2'),
+      url('/fonts/BladeRunnerMovieFont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
 }
 
 h2 {
   color: #6eff14;
-  font-size: 1.5em;
+  font-size: 1.8em;
   text-shadow: 0 0 300px #173b00, 0 0 10px #246101;
-
 }
 
 p {
@@ -61,22 +105,63 @@ display: flex;
   position: relative;
 }
 
+@font-face {
+  font-family: 'Bring Race';
+  src: url('/fonts/BringRace.woff2') format('woff2'),
+      url('/fonts/BringRace.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Hard Race';
+  src: url('/fonts/HardRace.woff2') format('woff2'),
+      url('/fonts/HardRace.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'RacingDonePro';
+  src: url('/fonts/RacingDonePro.woff2') format('woff2'),
+      url('/fonts/RacingDonePro.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
 
 .glitch {
   color: #39FF14;
-  font-size: 2.5em;
-  animation: flicker 3s infinite alternate;
+  font-size: 3em;
+  font-family: 'Hard Race';
+  font-weight: normal;
+  font-style: normal;
 }
 
-@keyframes flicker {
-  0%   { opacity: 1; text-shadow: 0 0 20px #39FF14; }
-  50%  { opacity: 0.6; text-shadow: 0 0 50px #00FF9C; }
-  100% { opacity: 1; text-shadow: 0 0 25px #39FF14; }
-} 
+@font-face {
+  font-family: 'Airstrike';
+  src: url('/fonts/Airstrike.woff2') format('woff2'),
+      url('/fonts/Airstrike.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Paladins';
+  src: url('/fonts/Paladins.woff2') format('woff2'),
+      url('/fonts/Paladins.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
 
 .glitch-pages {
   color: #39FF14;
-  font-size: 2.5em;
+  font-size: 3em;
+  font-family: 'Paladins';
 }
 
 
@@ -126,17 +211,21 @@ section.walkthrough {
 
 /* Modular cards dentro del walkthrough */
 section.walkthrough .card {
-  background: transparent;
-  border: 3px solid #72ff1a;
+  background: rgba(0, 0, 0, 0.25); /* Más opacidad para contraste */
+  backdrop-filter: blur(5px) saturate(160%);
+  -webkit-backdrop-filter: blur(5px) saturate(160%);
+  border: 2.5px solid rgb(0, 253, 21);
   padding: 1.5em;
   margin-top: 2.5em;
-  border-radius: 10px;
-  box-shadow: 0 0 20px rgba(106, 255, 0, 0.5);
-  transition: all 0.3s;
+  border-radius: 8px;
+  box-shadow:
+    0 0 9px rgba(60, 255, 0, 0.658),
+    inset 0 0 8px rgba(114, 255, 26, 0.943); /* 🔥 Profundidad sutil */
+  transition: transform 0.2s ease-in-out, box-shadow 0.3s ease;
   position: relative;
   z-index: 2;
-  transition: transform 0.2s ease-in-out;
 }
+
 
 section.walkthrough .card:hover {
   transform: scale(1);
@@ -145,8 +234,8 @@ section.walkthrough .card:hover {
 /* Encabezados */
 section.walkthrough h2 {
   font-size: 2em;
-  color: #78ff00;
-  margin-bottom: 0.5em;
+  color: #6eff14;
+  margin-bottom: 1em;
 }
 
 /* Responsive para móviles */
@@ -169,39 +258,29 @@ section.walkthrough h2 {
 
 .card {
   background: rgba(0, 0, 0, 0.25); /* Más opacidad para contraste */
-  backdrop-filter: blur(7px) saturate(160%);
-  -webkit-backdrop-filter: blur(7px) saturate(160%);
-  border: 2.5px solid rgb(114, 255, 26);
+  backdrop-filter: blur(10px) saturate(150%); /* Efecto cristal */
+  -webkit-backdrop-filter: blur(10px) saturate(150%); /* Compatibilidad con Safari */
+  border: 2.5px solid rgb(0, 253, 21);
   padding: 1.5em;
   margin-top: 2.5em;
   border-radius: 8px;
   box-shadow:
-    0 0 25px rgba(106, 255, 0, 0.36),
-    inset 0 0 6px rgba(114, 255, 26, 0.05); /* 🔥 Profundidad sutil */
+    0 0 9px rgba(0, 255, 8, 0.658),
+    inset 0 0 8px rgba(26, 255, 26, 0.943); /* 🔥 Profundidad sutil */
   transition: transform 0.2s ease-in-out, box-shadow 0.3s ease;
   position: relative;
   z-index: 2;
-  animation: fadeUp 0.5s ease forwards;
 }
-
-.card::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, rgba(114, 255, 26, 0.03), rgba(0,255,153,0.02));
-  border-radius: inherit;
-  pointer-events: none;
-  z-index: -1;
-}
-
 
 
 /* Headings inside card */
 .card h3 {
-  color: #72ff1a;
-  font-size: 1.4em;
-  
+  color: #31ff1a;
+  font-size: 1.3em;
+  margin-bottom: 0.9em;
+  font-weight: bold;
 }
+
 
 /* Links */
 .card a {
@@ -213,6 +292,20 @@ section.walkthrough h2 {
 .card a:hover {
   color: #0affc2;
   text-shadow: 0 0 5px rgba(0, 255, 156, 0.3);
+}
+
+.card p {
+  color: #d3fcd5;
+  font-size: 1.1em;
+  margin: 0.5em 0;
+  line-height: 1.8;
+  text-shadow: 0 0 5px rgba(211, 252, 213, 0.2);
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.card p:hover {
+  color: #aef5b8;
+  text-shadow: 0 0 10px rgba(211, 252, 213, 0.4);
 }
 
 
@@ -242,35 +335,35 @@ section.walkthrough h2 {
   border: 2px solid #39FF14;
   border-radius: 12px;
   cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, color 0.3s ease;
   text-decoration: none;
   position: relative;
   z-index: 1;
   overflow: hidden;
   box-shadow:
-    0 0 6px rgba(57, 255, 20, 0.4),
-    inset 0 0 4px rgba(57, 255, 20, 0.1);
+    0 0 8px rgba(57, 255, 20, 0.5),
+    inset 0 0 6px rgba(57, 255, 20, 0.2);
 }
 
 /* === Hover === */
 .selection .btn:hover {
   background-color: #39FF14;
   color: #000;
-  transform: scale(1.03);
+  transform: scale(1.05);
   box-shadow:
-    0 0 15px rgba(55, 255, 20, 0.301),
-    inset 0 0 8px rgba(57, 255, 20, 0.2);
+    0 0 20px rgba(55, 255, 20, 0.4),
+    inset 0 0 10px rgba(57, 255, 20, 0.3);
 }
 
 /* === Active === */
 .selection .btn:active {
-  transform: scale(0.96);
+  transform: scale(0.95);
   box-shadow:
-    0 0 6px rgba(57, 255, 20, 0.4),
-    inset 0 0 4px rgba(57, 255, 20, 0.3);
+    0 0 10px rgba(57, 255, 20, 0.6),
+    inset 0 0 6px rgba(57, 255, 20, 0.4);
 }
 
-/* === Optional: Pulsing Border only on focus === */
+/* === Focus === */
 .selection .btn:focus-visible {
   outline: none;
   animation: armedPulse 1.5s infinite ease-in-out;
@@ -278,10 +371,10 @@ section.walkthrough h2 {
 
 @keyframes armedPulse {
   0% {
-    box-shadow: 0 0 12px rgba(57, 255, 20, 0.2), inset 0 0 6px rgba(57, 255, 20, 0.1);
+    box-shadow: 0 0 12px rgba(57, 255, 20, 0.3), inset 0 0 8px rgba(57, 255, 20, 0.2);
   }
   100% {
-    box-shadow: 0 0 22px rgba(57, 255, 20, 0.5), inset 0 0 14px rgba(57, 255, 20, 0.3);
+    box-shadow: 0 0 24px rgba(57, 255, 20, 0.6), inset 0 0 16px rgba(57, 255, 20, 0.4);
   }
 }
 
@@ -300,27 +393,39 @@ section.walkthrough h2 {
   background: transparent;
   border: 2px solid #39FF14;
   color: #39FF14;
-  padding: 0.5em 1em;
-  transition: all 0.2s ease-in-out;
+  padding: 0.6em 1.2em;
+  transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
   font-size: 1.2em;
   text-decoration: none;
-  border-radius: 6px;
+  border-radius: 8px;
   cursor: pointer;
-  display: inline-block;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 8px rgba(57, 255, 20, 0.3), inset 0 0 6px rgba(57, 255, 20, 0.2);
 }
 
 .nav-buttons .btn:hover {
   background: #39FF14;
   color: #0d0d0d;
-  transform: scale(1.05);
+  transform: scale(1);
+  box-shadow: 0 0 12px rgba(57, 255, 20, 0.5), inset 0 0 8px rgba(57, 255, 20, 0.3);
 }
+
 .nav-buttons .btn:active {
   transform: scale(0.95);
+  box-shadow: 0 0 10px rgba(57, 255, 20, 0.4), inset 0 0 6px rgba(57, 255, 20, 0.2);
+}
+
+.nav-buttons .btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 14px rgba(57, 255, 20, 0.6), inset 0 0 10px rgba(57, 255, 20, 0.4);
 }
 
 /* ===== Typewriter & Cursor ===== */
 #terminal-text {
   color: #39FF14;
+  font-size: 1.3em;
 }
 
 .cursor {
@@ -439,31 +544,41 @@ h3::before {
 pre code {
   display: block;
   background-color: #000 !important;
-  color: #33ff00;
-  padding: 1em;
+  color: #39FF14;
+  padding: 1.2em;
   margin: 1.5em 0;
-  border-radius: 8px;
-  font-size: 0.95em;
+  border-radius: 10px;
+  font-size: 1em;
   font-family: 'JetBrains Mono', monospace;
-  line-height: 1.6;
+  line-height: 1.7;
   overflow-x: auto;
   white-space: pre;
-  border: 2px solid #90ff1a;
-  box-shadow: 0 0 10px rgba(0, 255, 153, 0.3);
-  text-shadow: 0 0 5px rgba(0, 255, 153, 0.2);
-  transition: background 0.2s ease-in-out, color 0.2s ease-in-out, transform 0.2s ease-in-out;
-
+  border: 2px solid #39FF14;
+  box-shadow: 
+    0 0 12px rgba(57, 255, 20, 0.3),
+    inset 0 0 8px rgba(57, 255, 20, 0.2);
+  text-shadow: 
+    0 0 6px rgba(57, 255, 20, 0.4),
+    0 0 10px rgba(57, 255, 20, 0.2);
+  transition: 
+    background-color 0.3s ease, 
+    color 0.3s ease, 
+    transform 0.3s ease, 
+    box-shadow 0.3s ease;
   max-width: 100%;
   box-sizing: border-box;
 }
 
 pre code:hover {
-  background-color: #66ff00 !important;
+  background-color: #66FF00 !important;
   color: #000 !important;
-  box-shadow: 0 0 15px rgba(13, 255, 0, 0.4);
-  transform: scale(1.01);
-  border: 2px solid #00ff00;
-  text-shadow: 0 0 8px rgba(0, 255, 153, 0.3);
+  box-shadow: 
+    0 0 20px rgba(57, 255, 20, 0.5),
+    inset 0 0 12px rgba(57, 255, 20, 0.3);
+  border: 2px solid #00FF00;
+  text-shadow: 
+    0 0 10px rgba(57, 255, 20, 0.5),
+    0 0 15px rgba(57, 255, 20, 0.3);
 }
 
 

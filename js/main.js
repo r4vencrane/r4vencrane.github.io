@@ -12,19 +12,26 @@ function startTypeEffect() {
   function typeLoop() {
     const base = "Loading ";
     const word = words[currentWord];
-    let currentText = word.substring(0, letterIndex);
+    const currentText = word.substring(0, letterIndex);
     typed.textContent = `> ${base}${currentText}`;
 
-    if (!isDeleting && letterIndex < word.length) {
-      letterIndex++;
-      setTimeout(typeLoop, 100);
-    } else if (isDeleting && letterIndex > 0) {
-      letterIndex--;
-      setTimeout(typeLoop, 50);
+    if (isDeleting) {
+      if (letterIndex > 0) {
+        letterIndex--;
+        setTimeout(typeLoop, 50);
+      } else {
+        isDeleting = false;
+        currentWord = (currentWord + 1) % words.length;
+        setTimeout(typeLoop, 500);
+      }
     } else {
-      isDeleting = !isDeleting;
-      if (!isDeleting) currentWord = (currentWord + 1) % words.length;
-      setTimeout(typeLoop, 1000);
+      if (letterIndex < word.length) {
+        letterIndex++;
+        setTimeout(typeLoop, 100);
+      } else {
+        isDeleting = true;
+        setTimeout(typeLoop, 1000);
+      }
     }
   }
 
@@ -33,11 +40,12 @@ function startTypeEffect() {
 
 // ========== PARTICLES ==========
 function startParticles() {
-  if (!document.getElementById("particles-js")) return;
+  const particlesContainer = document.getElementById("particles-js");
+  if (!particlesContainer) return;
 
   particlesJS("particles-js", {
     particles: {
-      number: { value: 100 },
+      number: { value: 150 },
       color: { value: "#AEFF00" },
       shape: { type: "edge" },
       opacity: { value: 0.2 },
@@ -48,54 +56,61 @@ function startParticles() {
         distance: 110,
         color: "#00FF9C",
         opacity: 0.5,
-        width: 3.5
-      }
+        width: 3.5,
+      },
     },
     interactivity: {
       events: {
-        onhover: { enable: true, mode: "repulse" }
-      }
-    }
+        onhover: { enable: true, mode: "repulse" },
+      },
+    },
   });
 }
 
 // ========== MARKDOWN LOADER ==========
 function loadMarkdown(file) {
+  const markdownContainer = document.getElementById("markdown-container");
+  if (!markdownContainer) return;
+
   fetch(file)
-    .then(res => res.text())
-    .then(md => {
-      const html = marked.parse(md);
-      document.getElementById("markdown-container").innerHTML = html;
+    .then((res) => {
+      if (!res.ok) throw new Error(`HTTP error! Status: ${res.status}`);
+      return res.text();
     })
-    .catch(err => {
-      document.getElementById("markdown-container").innerHTML = "<p>Error loading writeup.</p>";
-      console.error(err);
+    .then((md) => {
+      const html = marked.parse(md);
+      markdownContainer.innerHTML = html;
+    })
+    .catch((err) => {
+      markdownContainer.innerHTML = "<p>Error loading writeup.</p>";
+      console.error("Markdown loading error:", err);
     });
 }
 
-// ========== INIT ==========
-window.onload = () => {
-  startTypeEffect();
-  startParticles();
-};
-
-// Cargar el footer desde un archivo externo
-window.addEventListener('DOMContentLoaded', () => {
-  fetch('/footer.html')
-    .then(res => res.text())
-    .then(html => {
-      const footerContainer = document.createElement('div');
+// ========== FOOTER LOADER ==========
+function loadFooter() {
+  fetch("/footer.html")
+    .then((res) => {
+      if (!res.ok) throw new Error(`HTTP error! Status: ${res.status}`);
+      return res.text();
+    })
+    .then((html) => {
+      const footerContainer = document.createElement("div");
       footerContainer.innerHTML = html;
       document.body.appendChild(footerContainer);
-      
-      // Insertar el año actual automáticamente
-      const yearSpan = document.getElementById('year');
+
+      // Insert the current year automatically
+      const yearSpan = document.getElementById("year");
       if (yearSpan) {
         yearSpan.textContent = new Date().getFullYear();
       }
     })
-    .catch(err => console.error('Error loading footer:', err));
+    .catch((err) => console.error("Error loading footer:", err));
+}
+
+// ========== INIT ==========
+window.addEventListener("DOMContentLoaded", () => {
+  startTypeEffect();
+  startParticles();
+  loadFooter();
 });
-
-
-
