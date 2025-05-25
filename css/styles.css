@@ -62,8 +62,11 @@ h1, h2, h3 {
 
 h2 {
   color: #6eff14;
-  font-size: 1.8em;
   text-shadow: 0 0 300px #173b00, 0 0 10px #246101;
+  font-family: 'Hard Race','racing_done_proregular', 'Fira Code', monospace;
+  font-weight: normal;
+  font-style: normal;
+  letter-spacing: 0.08em;
 }
 
 p {
@@ -124,20 +127,21 @@ display: flex;
 }
 
 @font-face {
-  font-family: 'RacingDonePro';
-  src: url('/fonts/RacingDonePro.woff2') format('woff2'),
-      url('/fonts/RacingDonePro.woff') format('woff');
+  font-family: 'racing_done_proregular';
+  src: url('/fonts/racingdonepro-regular-webfont.woff2') format('woff2'),
+       url('/fonts/racingdonepro-regular-webfont.woff') format('woff');
   font-weight: normal;
   font-style: normal;
-  font-display: swap;
+
 }
 
 .glitch {
   color: #39FF14;
   font-size: 3em;
-  font-family: 'Hard Race';
+  font-family: 'Hard Race', 'racing_done_proregular' ,'Paladins', 'Fira Code', monospace;
   font-weight: normal;
   font-style: normal;
+  letter-spacing: 0.08em;
 }
 
 @font-face {
@@ -211,9 +215,9 @@ section.walkthrough {
 
 /* Modular cards dentro del walkthrough */
 section.walkthrough .card {
-  background: rgba(0, 0, 0, 0.25); /* Más opacidad para contraste */
-  backdrop-filter: blur(5px) saturate(160%);
-  -webkit-backdrop-filter: blur(5px) saturate(160%);
+  background: rgba(0, 0, 0, 0.555); /* Más opacidad para contraste */
+  backdrop-filter: blur(7px) saturate(160%);
+  -webkit-backdrop-filter: blur(7px) saturate(160%);
   border: 2.5px solid rgb(0, 253, 21);
   padding: 1.5em;
   margin-top: 2.5em;
@@ -257,7 +261,7 @@ section.walkthrough h2 {
 
 
 .card {
-  background: rgba(0, 0, 0, 0.25); /* Más opacidad para contraste */
+  background: rgba(0, 0, 0, 0.541); /* Más opacidad para contraste */
   backdrop-filter: blur(10px) saturate(150%); /* Efecto cristal */
   -webkit-backdrop-filter: blur(10px) saturate(150%); /* Compatibilidad con Safari */
   border: 2.5px solid rgb(0, 253, 21);
