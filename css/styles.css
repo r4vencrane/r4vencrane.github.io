@@ -238,25 +238,46 @@ section.walkthrough .card:hover {
 
 /* Encabezados */
 section.walkthrough h2 {
-  font-size: 2em;
   color: #6eff14;
+  font-size: 1.4em;
+  font-family: 'Hard Race', 'racing_done_proregular', 'Fira Code';
+  letter-spacing: 0.12em;
   margin-bottom: 1em;
+}
+
+section.walkthrough h3 {
+  color: #31ff1a;
+  font-family: 'Hard Race', 'racing_done_proregular', 'Fira Code';
+  margin-bottom: 0.8em;
+  letter-spacing: 0.12em;
 }
 
 /* Responsive para móviles */
 @media (max-width: 768px) {
   section.walkthrough {
-    padding: 0.5em 1em;
+    padding: 1em;
     max-width: 100%;
     text-align: left;
+    gap: 0.8em; /* Aumenta el espacio entre elementos */
   }
 
   section.walkthrough .card {
-    padding: 0.5em;
+    padding: 1em;
+    margin-top: 1.5em; /* Reduce el margen superior */
+    border-width: 2px; /* Ajusta el grosor del borde */
+    box-shadow: 
+      0 0 5px rgba(60, 255, 0, 0.5),
+      inset 0 0 5px rgba(114, 255, 26, 0.7); /* Ajusta la profundidad */
   }
 
   section.walkthrough h2 {
-    font-size: 1.6em;
+    font-size: 1em; /* Reduce el tamaño del texto */
+    margin-bottom: 0.8em; /* Ajusta el margen inferior */
+  }
+
+  section.walkthrough h3 {
+    font-size: 1.2em; /* Reduce el tamaño del subtítulo */
+    margin-bottom: 0.6em; /* Ajusta el margen inferior */
   }
 }
 
@@ -283,8 +304,8 @@ section.walkthrough h2 {
 .card h3 {
   color: #31ff1a;
   font-size: 1.3em;
+  font-family: 'Share Tech Mono';
   margin-bottom: 0.9em;
-  font-weight: bold;
 }
 
 
@@ -335,7 +356,7 @@ section.walkthrough h2 {
   padding: 0.75em 2.5em;
   margin: 1.2em auto 0;
   font-size: 1em;
-  font-family: 'Fira Code', monospace;
+  font-family: 'Share Tech Mono';
   color: #39FF14;
   background-color: #000;
   border: 2px solid #39FF14;
