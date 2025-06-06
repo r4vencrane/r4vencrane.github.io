@@ -24,6 +24,7 @@
     <!-- Navigation Buttons -->
     <div class="nav-buttons">
       <a class="btn" href="#scripts">Scripts</a>
+      <a class="btn" href="#enumeration">Enumeration</a>
       <a class="btn" href="#payloads">Payloads</a>
       <a class="btn" href="#malware">Malware</a>
       <a class="btn" href="#exploits">Exploits</a>
@@ -31,12 +32,40 @@
     </div>
 </div>
 
+  <section id="enumeration">
+
+    <h2>// Automated Enumeration Scripts</h2>
+
+    <div class="card">
+      <h3>Network Recon</h3>
+      <p>Bash-based wrapper for nmap, designed to <code>perform clean, automated, and aesthetically enhanced network scans.</code></p>
+      <p>Mainly for <code>Hack The Box</code> Machines!!</p>
+      <pre><code class="language-bash">./netrecon.sh -i 10.10.14.29</code></pre>
+      <div class="selection">
+        <a href="https://github.com/r4vencrane/Network-Recon" class="btn">View Script ></a>
+      </div>
+  </div>
+
+  <div class="card">
+    <h3>Root Shadow</h3>
+    <p>Bash-based Linux <code>Enumeration</code> tool focused on <code>Privilege Escalation</code></p>
+    <p>Covers users, services, jobs, software, networking and system internals. <code>(Interactive Mode Included)</code></p>
+    <pre><code class="language-bash">./root-shadow.sh -o</code></pre>
+    <div class="selection">
+      <a href="https://github.com/r4vencrane/Root-Shadow" class="btn">View Script ></a>
+    </div>
+  </div>
+
+
+
+  </section>
+
   <!-- Scripts -->
   <section id="scripts">
-    <h2>// Scripts</h2>
+    <h2>// Bash Scripting Skills</h2>
     <div class="card">
       <h3>HTB Machines</h3>
-      <p>It allows you to search machines by name, IP address, skills, OS, difficulty, or browse interactively by category.</p>
+      <p>It allows you to <code>search machines</code> by name, IP address, skills, OS, difficulty, or browse interactively by category.</p>
       <pre><code class="language-bash">./htbmachines.sh -m Inception</code></pre>
       <div class="selection">
         <a href="https://github.com/r4vencrane/HTB-Machines" class="btn">View Script ></a>
@@ -44,26 +73,22 @@
     </div>
 
     <div class="card">
-        <h3>Network Recon</h3>
-        <p>Bash-based wrapper for nmap, designed to perform clean, automated, and aesthetically enhanced network scans.</p>
-        <p>Mainly for Hack The Box Machines!!</p>
-        <pre><code class="language-bash">./netrecon.sh -i 10.10.14.29</code></pre>
-        <div class="selection">
-          <a href="https://github.com/r4vencrane/Network-Recon" class="btn">View Script ></a>
-        </div>
+      <h3>Roullete</h3>
+      <p>Terminal-based <code>Casino Roullete Simulator</code> built with <code>pure bash scripting</code>, implementing two popular betting strategies:</p>
+      <ul>
+        <li><code>Martingale Technique:</code> Double your bet after each loss</li>
+        <li><code>Inverse Labrouchere Technique:</code> grow your sequense with wins, reduce it with losses</li>
+      </ul>
+      <pre><code class="language-bash">./roullete.sh -m 10000 -t martingala</code></pre>
+      <div class="selection">
+        <a href="https://github.com/r4vencrane/Roulette" class="btn">View Script ></a>
+      </div>
     </div>
 
-    <div class="card">
-        <h3>ARP Scanner</h3>
-        <p>Project in process...</p>
-        <div class="selection">
-          <a href="#Script" class="btn">View Script ></a>
-        </div>
-    </div>
 
-    
 
   </section>
+
 
   <!-- Payloads -->
   <section id="payloads">
