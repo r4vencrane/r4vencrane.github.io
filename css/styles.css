@@ -785,225 +785,258 @@ body, html {
   transform: scale(1.15); /* Agranda ligeramente */
 }}
 
-/* --- CYBER BENTO BOX UI --- */
-.bento-grid {
-  display: grid;
-  /* Creamos 3 columnas iguales */
-  grid-template-columns: repeat(3, 1fr);
-  /* Las filas se ajustan automáticamente al contenido */
-  grid-auto-rows: minmax(130px, auto);
-  gap: 18px; /* Espacio perfecto entre cajas */
-  max-width: 1050px;
-  margin: 40px auto;
-  font-family: 'Share Tech Mono', 'JetBrains Mono', monospace;
+/* =========================================
+   1. BASE Y AJUSTES GLOBALES
+   ========================================= */
+   body {
+    /* Fuerza un renderizado suave de fuentes en todos los sistemas */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+  
+  /* =========================================
+     2. SISTEMA GRID BENTO (6 COLUMNAS)
+     ========================================= */
+  .bento-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-auto-rows: minmax(130px, auto);
+    gap: 18px;
+    max-width: 1050px;
+    margin: 40px auto;
+    font-family: 'Share Tech Mono', 'JetBrains Mono', monospace;
+  }
+  
+  /* Estilo base de todas las cajas */
+  .bento-box {
+    background: rgba(0, 15, 0, 0.4);
+    border: 1px solid rgba(0, 255, 0, 0.3);
+    border-radius: 12px;
+    padding: 25px;
+    position: relative;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+  
+  .bento-box:hover {
+    border-color: #00ff00;
+    box-shadow: 0 10px 30px rgba(0, 255, 0, 0.15);
+    transform: translateY(-4px);
+  }
+  
+  /* =========================================
+     3. ASIGNACIÓN DE TAMAÑOS (LA MATEMÁTICA)
+     ========================================= */
+  /* Fila 1 y 2 */
+.identity-box    { grid-column: span 4; grid-row: span 1; display: flex; flex-direction: column; justify-content: center; }
+.certs-container { grid-column: span 2; grid-row: span 2; display: flex; flex-direction: column; gap: 18px; }
+
+/* Skills lo subimos a 4 para que se alinee perfecto debajo de Identity (4 + 2 de Certs = 6) */
+.skills-box      { grid-column: span 4; grid-row: span 1; } 
+
+/* Fila 3 */
+/* Proyectos lo subimos a 6 para que ocupe el 100% de la pantalla y no deje un hueco feo de 1 columna */
+.projects-box    { grid-column: span 6; grid-row: span 1; } 
+
+/* Fila 4 */
+/* Ahora sí, 3 + 3 = 6 (Mitad y mitad perfectos) */
+.languages-box   { grid-column: span 3; grid-row: span 1; }
+.edu-box         { grid-column: span 3; grid-row: span 1; }
+  
+  /* =========================================
+     4. COMPONENTES INTERNOS (IDENTIDAD, SKILLS)
+     ========================================= */
+  .box-header {
+    font-size: 0.75rem;
+    color: rgba(0, 255, 0, 0.7);
+    margin-bottom: 20px;
+    letter-spacing: 1.5px;
+    border-bottom: 1px dashed rgba(0, 255, 0, 0.2);
+    padding-bottom: 5px;
+  }
+  
+  .hacker-name { color: #fff; font-size: 2.2rem; margin: 0; letter-spacing: 1px; }
+  .hacker-title { color: #00ff00; font-size: 1rem; margin: 8px 0 20px 0; font-weight: normal; }
+  
+  .operator-bio {
+    color: #a0a0a0;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    border-left: 2px solid rgba(0, 255, 0, 0.4);
+    padding-left: 15px;
+  }
+  .operator-bio strong { color: #00ff00; font-weight: normal; }
+  
+  /* Skills Tags */
+  .tags-container { display: flex; flex-wrap: wrap; gap: 12px; }
+  .cyber-tag {
+    background: rgba(0, 255, 0, 0.05);
+    color: #00ff00;
+    padding: 6px 12px;
+    border: 1px solid rgba(0, 255, 0, 0.3);
+    font-size: 0.85rem;
+    border-radius: 6px;
+    transition: background 0.2s;
+  }
+  .cyber-tag:hover { background: rgba(0, 255, 0, 0.2); }
+  
+  /* Listas y Educación */
+  .cyber-list { list-style: none; padding: 0; margin: 0; }
+  .cyber-list li { margin-bottom: 20px; border-left: 2px solid #00ff00; padding-left: 15px; }
+  .glow-text { color: #fff; font-size: 1.1rem; }
+  .cyber-list small { color: #00ffcc; font-size: 0.75rem;}
+  
+  .tool-item, .edu-line { margin-bottom: 12px; font-size: 0.9rem; color: #e0e0e0; }
+  .tool-item strong, .edu-line strong { color: #00ff00; display: block; margin-bottom: 3px; }
+  
+  .remote-tag {
+    color: #00ff00;
+    font-size: 0.75rem;
+    margin-left: 10px;
+    border: 1px solid rgba(0, 255, 0, 0.5);
+    padding: 3px 8px;
+    border-radius: 4px;
+    background: rgba(0, 255, 0, 0.1);
+    letter-spacing: 1px;
+    vertical-align: middle;
+  }
+  
+  /* =========================================
+     5. MÓDULO DE CERTIFICACIONES (GREEN EDITION)
+     ========================================= */
+  .cert-card {
+    background: rgba(0, 255, 0, 0.02);
+    border-left: 3px solid #00ff00;
+    padding: 12px 15px;
+    position: relative;
+    transition: all 0.3s ease;
+  }
+  
+  .cert-card:hover {
+    background: rgba(0, 255, 0, 0.08);
+    transform: translateX(5px);
+  }
+  
+  .cert-header-info { display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px; }
+  .vendor { font-size: 0.95rem; color: #2efc00; letter-spacing: 1px; }
+  
+  .status-tag.active {
+    font-size: 0.7rem;
+    color: #00fff2;
+    background: rgba(0, 255, 0, 0.1);
+    padding: 3px 6px;
+    border-radius: 3px;
+    border: 1px dashed #00fbff;
+    animation: blink-soft 2s infinite;
+  }
+
+  /* Estilo para la etiqueta de completado (Cian brillante) */
+.status-tag.completed {
+  font-size: 0.7rem;
+  color: #00ffff; /* Color Cian */
+  background: rgba(0, 255, 255, 0.1);
+  padding: 3px 6px;
+  border-radius: 3px;
+  border: 1px solid #00ffff;
+  text-shadow: 0 0 5px #00ffff;
+  animation: none; /* Quitamos el parpadeo para indicar estabilidad */
 }
 
-/* Estilo base de todas las cajas */
-.bento-box {
-  background: rgba(0, 15, 0, 0.4);
-  border: 1px solid rgba(0, 255, 0, 0.15);
-  border-radius: 12px; /* Esquinas suaves modernas */
-  padding: 25px;
-  position: relative;
-  transition: all 0.3s ease;
-  backdrop-filter: blur(8px); /* Efecto de cristal */
+/* Opcional: Si quieres que la barra de progreso también cambie de color al terminar */
+.status-tag.completed ~ .cyber-progress .cyber-bar {
+  background: #00ffff;
+  box-shadow: 0 0 10px #00ffff;
 }
 
-/* Efecto al pasar el ratón: Se ilumina y se levanta ligeramente */
-.bento-box:hover {
-  border-color: #00ff00;
-  box-shadow: 0 10px 30px rgba(0, 255, 0, 0.15);
-  transform: translateY(-4px);
+/* Opcional: Un efecto sutil en el nombre de la cert cuando está lista */
+.cert-card:has(.completed) .cert-acronym {
+  color: #00ffff;
+  text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
 }
-
-/* Asignación de tamaños en el Grid (La magia del Bento) */
-.identity-box { grid-column: span 2; grid-row: span 1; display: flex; flex-direction: column; justify-content: center; }
-.certs-box { grid-column: span 1; grid-row: span 2; }
-.skills-box { grid-column: span 2; grid-row: span 1; }
-.projects-box { grid-column: span 1; grid-row: span 1; }
-.edu-box { grid-column: span 2; grid-row: span 1; }
-
-/* Micro-detalles del interior */
-.box-header {
-  font-size: 0.75rem;
-  color: rgba(0, 255, 0, 0.7);
-  margin-bottom: 20px;
-  letter-spacing: 1.5px;
-  border-bottom: 1px dashed rgba(0, 255, 0, 0.2);
-  padding-bottom: 5px;
-}
-
-/* Tipografía Identidad */
-.hacker-name { color: #fff; font-size: 2.2rem; margin: 0; letter-spacing: 1px; }
-.hacker-title { color: #00ff00; font-size: 1rem; margin: 8px 0 20px 0; font-weight: normal; }
-
-/* Animación de "Ping" para la ubicación */
-.pulse-dot {
-  display: inline-block; width: 10px; height: 10px;
-  background: #00ff00; border-radius: 50%;
-  margin-right: 10px;
-  box-shadow: 0 0 10px #00ff00;
-  animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-  0% { transform: scale(0.9); opacity: 0.7; }
-  50% { transform: scale(1.3); opacity: 1; }
-  100% { transform: scale(0.9); opacity: 0.7; }
-}
-
-/* Estilo de los Tags de Skills */
-.tags-container { display: flex; flex-wrap: wrap; gap: 12px; }
-.cyber-tag {
-  background: rgba(0, 255, 0, 0.05);
-  color: #00ff00;
-  padding: 6px 12px;
-  border: 1px solid rgba(0, 255, 0, 0.3);
-  font-size: 0.85rem;
-  border-radius: 6px;
-  transition: background 0.2s;
-}
-.cyber-tag:hover { background: rgba(0, 255, 0, 0.2); }
-
-/* Estilo de Listas */
-.cyber-list { list-style: none; padding: 0; margin: 0; }
-.cyber-list li { margin-bottom: 20px; border-left: 2px solid #00ff00; padding-left: 15px; }
-.glow-text { color: #fff; font-size: 1.1rem; }
-.cyber-list small { color: #00ffcc; font-size: 0.75rem;}
-
-.tool-item, .edu-line { margin-bottom: 12px; font-size: 0.9rem; color: #e0e0e0; }
-.tool-item strong, .edu-line strong { color: #00ff00; display: block; margin-bottom: 3px; }
-
-/* Hacerlo Responsivo (Una sola columna en móviles) */
-@media (max-width: 850px) {
-  .bento-grid { grid-template-columns: 1fr; }
-  .bento-box { grid-column: span 1 !important; grid-row: span 1 !important; }
-}
-
-/* --- BOTÓN DE RETORNO BENTO --- */
-.bento-footer {
-  margin-top: 40px;
-  display: flex;
-  justify-content: center;
-  width: 100%;
-}
-
-.cyber-btn {
-  background: rgba(0, 20, 0, 0.6);
-  color: #00ff00;
-  border: 1px solid #00ff00;
-  padding: 12px 30px;
-  font-family: 'Share Tech Mono', 'JetBrains Mono', monospace;
-  text-decoration: none;
-  font-size: 1rem;
-  letter-spacing: 2px;
-  transition: all 0.3s ease;
-  backdrop-filter: blur(5px);
-}
-
-.cyber-btn:hover {
-  background: rgba(0, 255, 0, 0.15);
-  box-shadow: 0 0 20px rgba(0, 255, 0, 0.4);
-  transform: translateY(-3px); /* Pequeño salto hacia arriba */
-}
-
-/* Estilo para la biografía */
-.operator-bio {
-  color: #a0a0a0; /* Un gris claro para que no compita con el verde neón */
-  font-size: 0.9rem;
-  line-height: 1.6;
-  margin-bottom: 20px;
-  border-left: 2px solid rgba(0, 255, 0, 0.4);
-  padding-left: 15px;
-}
-
-.operator-bio strong {
-  color: #00ff00;
-  font-weight: normal;
-}
-
-/* --- SECURE CHANNEL (CONTACTO) --- */
-.contact-container {
-  max-width: 800px;
-  margin: 40px auto;
-  text-align: center;
-}
-
-.contact-desc {
-  color: #a0a0a0;
-  font-size: 0.95rem;
-  margin-bottom: 30px;
-  line-height: 1.6;
-}
-
-.comm-links {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  align-items: center;
-}
-
-/* Estilo de los Botones (Nodos) */
-.comm-node {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 15px;
-  width: 100%;
-  max-width: 450px;
-  padding: 15px 20px;
-  background: rgba(0, 20, 0, 0.6);
-  border: 1px dashed rgba(0, 255, 0, 0.4);
-  color: #00ff00;
-  text-decoration: none;
-  font-family: 'Share Tech Mono', 'JetBrains Mono', monospace;
-  font-size: 1.1rem;
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden; /* Necesario para el efecto de escáner */
-  border-radius: 8px;
-}
-
-/* Efecto de barra de luz (Escáner) invisible por defecto */
-.comm-node::before {
-  content: '';
-  position: absolute;
-  left: -100%;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(0,255,0,0.2), transparent);
-  transition: left 0.5s ease;
-}
-
-/* Animación al pasar el mouse */
-.comm-node:hover {
-  border-style: solid;
-  border-color: #00ff00;
-  background: rgba(0, 255, 0, 0.1);
-  box-shadow: 0 0 20px rgba(0, 255, 0, 0.2);
-  transform: scale(1.02); /* El botón crece un poquito */
-  color: #fff; /* El texto se vuelve blanco para resaltar */
-}
-
-/* El escáner pasa de izquierda a derecha */
-.comm-node:hover::before {
-  left: 100%;
-}
-
-.comm-node i {
-  font-size: 1.5rem;
-}
-
-/* --- ETIQUETA DE TRABAJO REMOTO --- */
-.remote-tag {
-  color: #00ff00;
-  font-size: 0.75rem;
-  margin-left: 10px;
-  border: 1px solid rgba(0, 255, 0, 0.5);
-  padding: 3px 8px;
-  border-radius: 4px;
-  background: rgba(0, 255, 0, 0.1);
-  letter-spacing: 1px;
-  vertical-align: middle;
-}
+  
+  .cert-acronym {
+    color: #fff;
+    font-size: 1.3rem;
+    margin: 0 0 10px 0;
+    letter-spacing: 2px;
+    display: flex;
+    align-items: center;
+  }
+  
+  /* Barras de progreso */
+  .cyber-progress { width: 100%; height: 4px; background: rgba(255, 255, 255, 0.1); border-radius: 2px; overflow: hidden; margin-top: 5px; }
+  .cyber-bar { height: 100%; background: #00ff00; box-shadow: 0 0 10px #00ff00; transition: width 1s ease-in-out; }
+  
+  /* =========================================
+     6. HERRAMIENTAS DESPLEGADAS (TOOLS)
+     ========================================= */
+  .tools-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+  .tool-item { background: rgba(0, 255, 0, 0.03); border: 1px solid rgba(0, 255, 0, 0.1); border-radius: 8px; padding: 15px; transition: all 0.3s ease; }
+  .tool-item:hover { background: rgba(0, 255, 0, 0.1); border-color: rgba(0, 255, 0, 0.4); transform: translateX(5px); }
+  .tool-name { color: #00ff00; font-size: 1.1rem; font-weight: bold; display: block; margin-bottom: 8px; letter-spacing: 1px; }
+  .tool-desc { color: #a0a0a0; font-size: 0.85rem; display: block; line-height: 1.5; border-left: 2px solid rgba(0, 255, 0, 0.3); padding-left: 10px; }
+  
+  /* =========================================
+     7. BOTONES Y CONTACTO (HANDSHAKE)
+     ========================================= */
+  .bento-footer { margin-top: 40px; display: flex; justify-content: center; width: 100%; }
+  .contact-container { max-width: 800px; margin: 40px auto; text-align: center; }
+  .contact-desc { color: #a0a0a0; font-size: 0.95rem; margin-bottom: 30px; line-height: 1.6; }
+  .comm-links { display: flex; flex-direction: column; gap: 15px; align-items: center; }
+  
+  .cyber-btn, .comm-node {
+    background: rgba(0, 20, 0, 0.6);
+    color: #00ff00;
+    border: 1px dashed rgba(0, 255, 0, 0.4);
+    font-family: 'Share Tech Mono', 'JetBrains Mono', monospace;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+  
+  .cyber-btn { padding: 12px 30px; font-size: 1rem; letter-spacing: 2px; backdrop-filter: blur(5px); border-style: solid; }
+  .cyber-btn:hover { background: rgba(0, 255, 0, 0.15); box-shadow: 0 0 20px rgba(0, 255, 0, 0.4); transform: translateY(-3px); }
+  
+  .comm-node { display: flex; align-items: center; justify-content: center; gap: 15px; width: 100%; max-width: 450px; padding: 15px 20px; font-size: 1.1rem; position: relative; overflow: hidden; border-radius: 8px; }
+  .comm-node::before { content: ''; position: absolute; left: -100%; top: 0; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(0,255,0,0.2), transparent); transition: left 0.5s ease; }
+  .comm-node:hover { border-style: solid; border-color: #00ff00; background: rgba(0, 255, 0, 0.1); box-shadow: 0 0 20px rgba(0, 255, 0, 0.2); transform: scale(1.02); color: #fff; }
+  .comm-node:hover::before { left: 100%; }
+  .comm-node i { font-size: 1.5rem; }
+  
+  /* =========================================
+     8. ANIMACIONES GLOBALES
+     ========================================= */
+  .pulse-dot {
+    display: inline-block; width: 10px; height: 10px; background: #00ff00; border-radius: 50%;
+    margin-right: 10px; box-shadow: 0 0 10px #00ff00; animation: pulse 2s infinite;
+  }
+  @keyframes pulse { 0% { transform: scale(0.9); opacity: 0.7; } 50% { transform: scale(1.3); opacity: 1; } 100% { transform: scale(0.9); opacity: 0.7; } }
+  @keyframes blink-soft { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+  
+  /* =========================================
+     9. RESPONSIVE (TABLETS Y MÓVILES)
+     ========================================= */
+  /* Tablets (Pantallas medianas) */
+  @media (max-width: 1024px) {
+    .bento-grid { grid-template-columns: repeat(2, 1fr); padding: 0 20px; }
+    .identity-box  { grid-column: span 2; }
+    .certs-container { grid-column: span 1; grid-row: span 1; }
+    .skills-box    { grid-column: span 2; }
+    .projects-box  { grid-column: span 2; }
+    .languages-box { grid-column: span 1; }
+    .edu-box       { grid-column: span 1; }
+  }
+  
+  /* Teléfonos (Pantallas pequeñas) */
+  @media (max-width: 768px) {
+    .bento-grid { grid-template-columns: 1fr; padding: 0 15px; margin-top: 20px; }
+    .bento-box { grid-column: span 1 !important; grid-row: span 1 !important; padding: 20px; }
+    .hacker-name { font-size: 1.8rem; }
+    .hacker-title { font-size: 0.9rem; }
+    .tools-grid { grid-template-columns: 1fr; }
+    .contact-container { padding: 20px 15px; margin: 20px 15px; }
+    .comm-node { font-size: 0.9rem; padding: 12px; }
+    .cyber-btn { width: 90%; text-align: center; box-sizing: border-box; }
+  }
